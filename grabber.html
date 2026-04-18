@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Grabber Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; background: #f4f4f9; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        button, input::file-selector-button { background: #25D366; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; font-weight: bold;}
+        textarea { width: 100%; height: 400px; margin-top: 20px; font-family: monospace; font-size: 13px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        h2 { margin-top: 0; color: #333; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📸 Villa Image Grabber</h2>
+    <p>Click the button below and select your <b>villa-detail</b> folder. This tool will instantly read all 60 files, find the images, and write the final code for you!</p>
+    
+    <input type="file" id="folderInput" webkitdirectory directory multiple>
+    
+    <textarea id="outputCode" placeholder="Your final code will appear here..."></textarea>
+</div>
+
+<script>
+    // This is the base data we already set up
+    const baseVillas = [
+        { id: "25", bhk: 1, title: "1 BEDROOM KESARI VILLA", loc: "KARJAT", priceWd: "2500", priceWe: "5500", img: "public/villa/697deba4b2c24.jpg", guests: "Max 3-4 Guests" },
+        { id: "24", bhk: 1, title: "1 BEDROOM HIWARE VILLA", loc: "KARJAT", priceWd: "2500", priceWe: "5500", img: "public/villa/697c496de583c.jpg", guests: "Max 3-4 Guests" },
+        { id: "16", bhk: 1, title: "1 BEDROOM SOMNA CASA", loc: "KARJAT", priceWd: "3000", priceWe: "6000", img: "public/villa/697de6820ce6d.jpg", guests: "Max 3-4 Guests" },
+        { id: "35", bhk: 2, title: "2 BHK SHREE FARMS", loc: "KARJAT", priceWd: "5500", priceWe: "9500", img: "public/villa/697dec1f0c65d.jpg", guests: "Max 7 Guests" },
+        { id: "34", bhk: 2, title: "2 BHK SMOOKEY VILLA", loc: "IGATPURI", priceWd: "5000", priceWe: "8000", img: "public/villa/697a3b2fcbbb5.jpg", guests: "Max 7 Guests" },
+        { id: "33", bhk: 2, title: "2 BHK ANVI VILLA", loc: "ALIBAUG", priceWd: "5000", priceWe: "9000", img: "public/villa/697a399c07787.jpg", guests: "Max 7 Guests" },
+        { id: "32", bhk: 2, title: "2 BHK ZINGO VALLEY", loc: "IGATPURI", priceWd: "5000", priceWe: "9000", img: "public/villa/697a38d173697.jpg", guests: "Max 7 Guests" },
+        { id: "31", bhk: 2, title: "2 BHK DUNED DELIGHT", loc: "KARJAT", priceWd: "5500", priceWe: "9000", img: "public/villa/697a373e58b23.jpg", guests: "Max 7 Guests" },
+        { id: "30", bhk: 2, title: "2 BHK SAPPHIRE SEASCAPE", loc: "KHANDALA", priceWd: "5500", priceWe: "9000", img: "public/villa/697a3530a1467.jpg", guests: "Max 7 Guests" },
+        { id: "28", bhk: 2, title: "2 BHK TOPICALTIDE", loc: "LONAVALA", priceWd: "5500", priceWe: "9000", img: "public/villa/697a327acb00a.jpg", guests: "Max 7 Guests" },
+        { id: "27", bhk: 2, title: "2 BHK RANGILA VILLA", loc: "ALIBAUG", priceWd: "5000", priceWe: "9000", img: "public/villa/697a1c1c93270.jpg", guests: "Max 7 Guests" },
+        { id: "26", bhk: 2, title: "2 BHK AVION HOLIDAY", loc: "KARJAT", priceWd: "5000", priceWe: "9000", img: "public/villa/697a0a5e6bb6c.jpg", guests: "Max 7 Guests" },
+        { id: "17", bhk: 2, title: "2 BHK ROYAL CRYSTAL", loc: "LONAVALA", priceWd: "5500", priceWe: "9500", img: "public/villa/6979c02550ae8.jpg", guests: "Max 7 Guests" },
+        { id: "84", bhk: 3, title: "3 BHK THAKWAD NIWAS", loc: "KARJAT", priceWd: "9000", priceWe: "15000", img: "public/villa/697f49a5ef5eb.jpg", guests: "Max 10 Guests" },
+        { id: "45", bhk: 3, title: "3 BHK THE LAST RESORT", loc: "MAHABLESHWAR", priceWd: "8000", priceWe: "12000", img: "public/villa/697af073bd369.jpg", guests: "Max 10 Guests" },
+        { id: "44", bhk: 3, title: "3 BHK SUNFLOWER", loc: "LONAVALA", priceWd: "9000", priceWe: "16000", img: "public/villa/697ae8f5593c5.jpg", guests: "Max 10 Guests" },
+        { id: "43", bhk: 3, title: "3 BHK VIRAJ DHULE", loc: "LONAVALA", priceWd: "9000", priceWe: "16000", img: "public/villa/697fc6bb1dcb7.jpg", guests: "Max 10 Guests" },
+        { id: "42", bhk: 3, title: "3 BHK THE LAKE HOUSE", loc: "LONAVALA", priceWd: "7000", priceWe: "10000", img: "public/villa/697ae6e82cc9d.jpg", guests: "Max 10 Guests" },
+        { id: "41", bhk: 3, title: "3 BHK VILLA OASIS", loc: "KARJAT", priceWd: "8500", priceWe: "15000", img: "public/villa/697a520e2f933.jpg", guests: "Max 10 Guests" },
+        { id: "40", bhk: 3, title: "3 BHK MERITASADORE", loc: "PANCHGANI", priceWd: "9000", priceWe: "14000", img: "public/villa/697a5066c4081.jpg", guests: "Max 10 Guests" },
+        { id: "39", bhk: 3, title: "3 BHK CLIFF SIDEAWAY", loc: "PANCHGANI", priceWd: "9000", priceWe: "14000", img: "public/villa/697a41b380265.jpg", guests: "Max 10 Guests" },
+        { id: "18", bhk: 3, title: "3 BHK PRINCESS VILLA", loc: "LONAVALA / PAWNA", priceWd: "12000", priceWe: "18000", img: "public/villa/697f1770d98ac.jpg", guests: "Max 10 Guests" },
+        { id: "54", bhk: 4, title: "4 BHK VIRA FARM", loc: "KARJAT", priceWd: "12000", priceWe: "24000", img: "public/villa/697f1311863a4.jpg", guests: "Max 15 Guests" },
+        { id: "53", bhk: 4, title: "4 BHK ALING MASK", loc: "ALIBAUG", priceWd: "10000", priceWe: "18000", img: "public/villa/697aff08d532e.jpg", guests: "Max 15 Guests" },
+        { id: "52", bhk: 4, title: "4 BHK DECK", loc: "PANCHGANI", priceWd: "16500", priceWe: "21000", img: "public/villa/697afe21e0fd0.jpg", guests: "Max 15 Guests" },
+        { id: "51", bhk: 4, title: "4 BHK BORN COTTAGE", loc: "LONAVALA", priceWd: "16000", priceWe: "21000", img: "public/villa/697afc6b2ef8e.jpg", guests: "Max 15 Guests" },
+        { id: "50", bhk: 4, title: "4 BHK NOVOTEL IMAGICA", loc: "PANCHGANI", priceWd: "12000", priceWe: "18000", img: "public/villa/697af8362bf38.jpg", guests: "Max 15 Guests" },
+        { id: "49", bhk: 4, title: "4 BHK IGNO CASA", loc: "IGATPURI", priceWd: "9500", priceWe: "16000", img: "public/villa/697af64a65de4.jpg", guests: "Max 15 Guests" },
+        { id: "48", bhk: 4, title: "4 BHK CORN VILLA", loc: "ALIBAUG", priceWd: "10000", priceWe: "18000", img: "public/villa/697af5afbb342.jpg", guests: "Max 15 Guests" },
+        { id: "47", bhk: 4, title: "4 BHK PUSHKAR NALAWADE", loc: "LONAVALA", priceWd: "10000", priceWe: "18000", img: "public/villa/697f3d0b5d7f4.jpg", guests: "Max 15 Guests" },
+        { id: "46", bhk: 4, title: "4 BHK CRAZY BELL", loc: "KARJAT", priceWd: "10000", priceWe: "18000", img: "public/villa/697af16d591ac.jpg", guests: "Max 15 Guests" },
+        { id: "19", bhk: 4, title: "4 BHK EARTH FARM", loc: "LONAVALA / PAWNA", priceWd: "15000", priceWe: "22000", img: "public/villa/697f090e0f11d.jpg", guests: "Max 15 Guests" },
+        { id: "89", bhk: 5, title: "5 BHK DREAMWOOD VILLA", loc: "PAWNA / LONAVALA", priceWd: "18000", priceWe: "28000", img: "public/villa/69c3f8de08ca0.jpg", guests: "Max 20 Guests" },
+        { id: "85", bhk: 5, title: "5 BHK VILAS SAKHARAM WAGHMARE", loc: "LONAVALA", priceWd: "25000", priceWe: "36000", img: "public/villa/69c3f94f8ce61.jpg", guests: "Max 20 Guests" },
+        { id: "64", bhk: 5, title: "5 BHK BREEZA BAND", loc: "KARJAT", priceWd: "17000", priceWe: "24000", img: "public/villa/697b3c3b68ef6.jpg", guests: "Max 20 Guests" },
+        { id: "63", bhk: 5, title: "5 BHK EKAYA FARMS", loc: "LONAVALA / PAWNA", priceWd: "16000", priceWe: "23000", img: "public/villa/697f450899339.jpg", guests: "Max 20 Guests" },
+        { id: "62", bhk: 5, title: "5 BHK SEWAKET VILLA", loc: "ALIBAUG", priceWd: "14000", priceWe: "22000", img: "public/villa/697b397f37dc0.jpg", guests: "Max 20 Guests" },
+        { id: "61", bhk: 5, title: "5 BHK SOMNA VILLA", loc: "ALIBAUG", priceWd: "14000", priceWe: "22000", img: "public/villa/697b38d773a32.jpg", guests: "Max 20 Guests" },
+        { id: "60", bhk: 5, title: "5 BHK DOLCEVITA", loc: "LONAVALA", priceWd: "16000", priceWe: "26000", img: "public/villa/697b370a0a3ef.jpg", guests: "Max 20 Guests" },
+        { id: "59", bhk: 5, title: "5 BHK BAMBLE VILLA", loc: "IGATPURI", priceWd: "15000", priceWe: "23000", img: "public/villa/697f3a6c6a8ca.jpg", guests: "Max 20 Guests" },
+        { id: "58", bhk: 5, title: "5 BHK LIGO VILLA", loc: "KARJAT", priceWd: "13000", priceWe: "25000", img: "public/villa/697b3549c3010.jpg", guests: "Max 20 Guests" },
+        { id: "57", bhk: 5, title: "5 BHK MARHABA VILLA", loc: "MAHABLESHWAR", priceWd: "18000", priceWe: "28000", img: "public/villa/697b3364da2b5.jpg", guests: "Max 20 Guests" },
+        { id: "56", bhk: 5, title: "5 BHK KAMISAT VILLA", loc: "LONAVALA", priceWd: "13000", priceWe: "25000", img: "public/villa/697b316961de8.jpg", guests: "Max 20 Guests" },
+        { id: "55", bhk: 5, title: "5 BHK DRIFTWOOD", loc: "PANCHGANI", priceWd: "17000", priceWe: "24000", img: "public/villa/697b2f61a1b27.jpg", guests: "Max 20 Guests" },
+        { id: "20", bhk: 5, title: "5 BHK BATCOMB", loc: "KARJAT", priceWd: "18500", priceWe: "28000", img: "public/villa/6979fd053adde.jpg", guests: "Max 20 Guests" },
+        { id: "88", bhk: 6, title: "6 BHK DUBASH FARM", loc: "MAHABLESHWAR", priceWd: "20000", priceWe: "35000", img: "public/villa/69c3f8c083d18.jpg", guests: "Max 26 Guests" },
+        { id: "87", bhk: 6, title: "6 BHK GLASS HOUSE", loc: "PAWNA / LONAVALA", priceWd: "22000", priceWe: "39000", img: "public/villa/69c3f90b7e4d3.jpg", guests: "Max 26 Guests" },
+        { id: "69", bhk: 6, title: "6 BHK PERCHE OFFGRID", loc: "LONAVALA / PAWNA", priceWd: "23000", priceWe: "39000", img: "public/villa/697f084cb5b66.jpg", guests: "Max 26 Guests" },
+        { id: "68", bhk: 6, title: "6 BHK BHUBTARA", loc: "LONAVALA", priceWd: "22000", priceWe: "39000", img: "public/villa/697f13c93e07b.jpg", guests: "Max 26 Guests" },
+        { id: "67", bhk: 6, title: "6 BHK LAKDAWALA BUNGALOW", loc: "LONAVALA", priceWd: "20000", priceWe: "38000", img: "public/villa/697f3c2842990.jpg", guests: "Max 26 Guests" },
+        { id: "66", bhk: 6, title: "6 BHK HOUSEN VILLA", loc: "LONAVALA", priceWd: "19500", priceWe: "28000", img: "public/villa/697c4f67ad930.jpg", guests: "Max 26 Guests" },
+        { id: "65", bhk: 6, title: "6 BHK BLACK STONE VILLA", loc: "LONAVALA", priceWd: "16500", priceWe: "28500", img: "public/villa/697c4e359d6e4.jpg", guests: "Max 26 Guests" },
+        { id: "21", bhk: 6, title: "6 BHK MASK STONE", loc: "KARJAT", priceWd: "24000", priceWe: "42000", img: "public/villa/6979fe54aa120.jpg", guests: "Max 26 Guests" },
+        { id: "83", bhk: 7, title: "7 BHK THE WHITE HELL", loc: "KARJAT", priceWd: "28000", priceWe: "42000", img: "public/villa/69c3f9774c0cb.jpg", guests: "Max 30 Guests" },
+        { id: "74", bhk: 7, title: "7 BHK JIWA VILLA", loc: "ALIBAUG", priceWd: "20000", priceWe: "32000", img: "public/villa/69c3fa2e60b39.jpg", guests: "Max 30 Guests" },
+        { id: "73", bhk: 7, title: "7 BHK HARSI VILLA", loc: "LONAVALA", priceWd: "28000", priceWe: "48000", img: "public/villa/697c57abf00cd.jpg", guests: "Max 30 Guests" },
+        { id: "72", bhk: 7, title: "7 BHK BUDDHA VIHAR", loc: "KARJAT", priceWd: "28000", priceWe: "48000", img: "public/villa/697f0a42523a9.jpg", guests: "Max 30 Guests" },
+        { id: "71", bhk: 7, title: "7 BHK LUXURY HUT VILLA", loc: "KARJAT", priceWd: "52000", priceWe: "90000", img: "public/villa/697c55c302d4e.jpg", guests: "Max 30 Guests" },
+        { id: "70", bhk: 7, title: "7 BHK IGRI HORA TURF VILLA", loc: "IGATPURI", priceWd: "19500", priceWe: "39500", img: "public/villa/697c54c757230.jpg", guests: "Max 30 Guests" },
+        { id: "22", bhk: 7, title: "7 BHK LOHKRA VILLA", loc: "LONAVALA", priceWd: "27000", priceWe: "42000", img: "public/villa/6979ff8579761.jpg", guests: "Max 30 Guests" },
+        { id: "78", bhk: 8, title: "8 BHK MAHABIR VILLA", loc: "KARJAT", priceWd: "28000", priceWe: "48000", img: "public/villa/69c3f9d0b9386.jpg", guests: "Max 35 Guests" },
+        { id: "77", bhk: 8, title: "8 BHK HILLJILL VILLA", loc: "IGATPURI", priceWd: "22000", priceWe: "42000", img: "public/villa/697c7db6c753e.jpg", guests: "Max 35 Guests" },
+        { id: "76", bhk: 8, title: "8 BHK HIRRO VILLA", loc: "ALIBAUG", priceWd: "22000", priceWe: "42000", img: "public/villa/69c3f9f804616.jpg", guests: "Max 35 Guests" },
+        { id: "75", bhk: 8, title: "8 BHK APRIT VILLA", loc: "LONAVALA", priceWd: "35000", priceWe: "58000", img: "public/villa/69c3fa14a55b2.jpg", guests: "Max 35 Guests" },
+        { id: "23", bhk: 8, title: "8 BHK SANDHU FARMS", loc: "LONAVALA / PAWNA", priceWd: "35000", priceWe: "58000", img: "public/villa/697f3df10d88c.jpg", guests: "Max 35 Guests" },
+        { id: "80", bhk: 10, title: "10 BHK CASA DE KRI", loc: "KARJAT", priceWd: "32000", priceWe: "60000", img: "public/villa/697c8783b280a.jpg", guests: "Max 40 Guests" },
+        { id: "79", bhk: 10, title: "10 BHK PARIS VILLA", loc: "LONAVALA", priceWd: "32000", priceWe: "60000", img: "public/villa/697c85739690d.jpg", guests: "Max 40 Guests" },
+        { id: "82", bhk: 12, title: "12 BHK ANJIRAM VILLA", loc: "LONAVALA", priceWd: "44000", priceWe: "88000", img: "public/villa/69c3f99b56ef9.jpg", guests: "Max 50 Guests" },
+        { id: "81", bhk: 12, title: "12 BHK SINGARA VILLA", loc: "KARJAT", priceWd: "44000", priceWe: "88000", img: "public/villa/69d518437cf8f.jpg", guests: "Max 50 Guests" }
+    ];
+
+    document.getElementById('folderInput').addEventListener('change', function(e) {
+        const files = e.target.files;
+        let htmlFiles = [];
+        
+        // Filter only HTML files
+        for (let i = 0; i < files.length; i++) {
+            if (files[i].name.endsWith('.html')) {
+                htmlFiles.push(files[i]);
+            }
+        }
+
+        if (htmlFiles.length === 0) {
+            alert("No HTML files found in this folder!");
+            return;
+        }
+
+        let processedCount = 0;
+        let galleryData = {};
+
+        htmlFiles.forEach(file => {
+            const villaId = file.name.replace('.html', '');
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const text = e.target.result;
+                
+                // This regex finds the exact image paths you use for the gallery in your old code
+                const regex = /href="\.\.\/(public\/(?:villa|gallery)\/[^"]+\.(?:jpg|png|jpeg|webp))/gi;
+                let match;
+                let images = [];
+                
+                while ((match = regex.exec(text)) !== null) {
+                    images.push(match[1]); // Grabs "public/villa/image.jpg"
+                }
+
+                // Remove duplicate images
+                images = [...new Set(images)];
+
+                if (images.length > 0) {
+                    galleryData[villaId] = images;
+                }
+                
+                processedCount++;
+                if (processedCount === htmlFiles.length) {
+                    generateFinalCode(galleryData);
+                }
+            };
+            reader.readAsText(file);
+        });
+    });
+
+    function generateFinalCode(galleryData) {
+        // Merge the gallery data into our base villas array
+        const updatedVillas = baseVillas.map(v => {
+            if (galleryData[v.id]) {
+                v.gallery = galleryData[v.id];
+            }
+            return v;
+        });
+
+        // Format it nicely so it looks like code
+        const codeString = "const villas = " + JSON.stringify(updatedVillas, null, 4) + ";";
+        document.getElementById('outputCode').value = codeString;
+        alert("Done! Check the text box for your final code.");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,2592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Details | Novastay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc;}
+        .serif { font-family: 'Playfair Display', serif; }
+        body.lightbox-open { overflow: hidden; }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white border-b border-gray-100 px-4 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-bold text-lg tracking-widest uppercase text-gray-800 hover:text-orange-600 transition">
+                Novastay
+            </a>
+            <div class="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-wider">
+                <a href="index.html" class="text-gray-400 hover:text-gray-900 transition">Home</a>
+                <a href="about-us.html" class="text-gray-400 hover:text-gray-900 transition">About Us</a>
+                <a href="contact-us.html" class="text-gray-400 hover:text-gray-900 transition">Contact</a>
+            </div>
+            <a href="https://wa.me/918796130125" class="bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-green-600 transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Contact Host
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8" id="villa-content" style="display: none;">
+        
+        <!-- Header & Breadcrumb -->
+        <div class="mb-6">
+            <div class="flex items-center text-xs text-gray-500 mb-2 uppercase font-semibold tracking-wider">
+                <a href="index.html" class="hover:text-blue-500">Home</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900" id="v-loc-crumb">Location</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2" id="v-title">Villa Name</h1>
+            <div class="flex items-center gap-4 text-sm text-gray-600 font-medium">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-star text-yellow-400"></i> 4.8 (38 Reviews)</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot text-red-500"></i> <span id="v-loc">Location</span>, Maharashtra</span>
+            </div>
+        </div>
+
+        <!-- DYNAMIC IMAGE GALLERY CONTAINER -->
+        <div id="dynamic-gallery" class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[300px] md:h-[450px] rounded-2xl overflow-hidden mb-10 relative">
+            <!-- Images will be injected here automatically by Javascript -->
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <!-- LEFT COLUMN: Description & Details -->
+            <div class="lg:col-span-2 space-y-10">
+                
+                <div class="flex flex-wrap gap-4 md:gap-8 pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 text-gray-700">
+                        <i class="fa-solid fa-users text-xl text-blue-500"></i>
+                        <div><p class="text-xs text-gray-500 uppercase font-bold">Capacity</p><p class="font-semibold" id="v-guests">Max Guests</p></div>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700">
+                        <i class="fa-solid fa-bed text-xl text-blue-500"></i>
+                        <div><p class="text-xs text-gray-500 uppercase font-bold">Rooms</p><p class="font-semibold"><span id="v-bhk">1</span> Bedroom</p></div>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700">
+                        <i class="fa-solid fa-bath text-xl text-blue-500"></i>
+                        <div><p class="text-xs text-gray-500 uppercase font-bold">Baths</p><p class="font-semibold">Attached Baths</p></div>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700">
+                        <i class="fa-solid fa-swimming-pool text-xl text-blue-500"></i>
+                        <div><p class="text-xs text-gray-500 uppercase font-bold">Pool</p><p class="font-semibold">Swimming Pool</p></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">What this place offers</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-snowflake text-gray-400 w-5 text-xl"></i> AC Rooms</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-wifi text-gray-400 w-5 text-xl"></i> Free Wi-Fi</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-tv text-gray-400 w-5 text-xl"></i> Television</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-bolt text-gray-400 w-5 text-xl"></i> 24 Hrs Electricity</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-car text-gray-400 w-5 text-xl"></i> Car Parking</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-dice text-gray-400 w-5 text-xl"></i> Indoor Games</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-volume-up text-gray-400 w-5 text-xl"></i> Speakers</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-user-tie text-gray-400 w-5 text-xl"></i> 24/7 Caretaker</div>
+                        <div class="flex items-center gap-3 text-gray-700 font-medium"><i class="fa-solid fa-wind text-gray-400 w-5 text-xl"></i> Fridge Available</div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2"><i class="fa-solid fa-utensils"></i> Food & Extras</h3>
+                    <ul class="space-y-3 text-blue-800">
+                        <li class="flex justify-between border-b border-blue-200 pb-2"><span>Meals (Proper Jain Food Available)</span> <strong>₹750 / person</strong></li>
+                        <li class="flex justify-between border-b border-blue-200 pb-2"><span>BBQ Setup</span> <strong>₹150 / person</strong></li>
+                        <li class="flex justify-between border-b border-blue-200 pb-2"><span>Extra Guest Charge</span> <strong>₹500 / person</strong></li>
+                        <li class="flex justify-between"><span>Drinking Water</span> <strong>Bisleri Provided</strong></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Policies & Rules</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-gray-800"><i class="fa-regular fa-clock text-blue-500 mr-2"></i> Timings</h4>
+                            <p class="text-sm text-gray-600"><strong>Check-in:</strong> 11:00 AM</p>
+                            <p class="text-sm text-gray-600"><strong>Check-out:</strong> 11:00 AM</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-gray-800"><i class="fa-solid fa-shield-halved text-blue-500 mr-2"></i> Security</h4>
+                            <p class="text-sm text-gray-600"><strong>Deposit:</strong> ₹3,000 to ₹10,000 (Refundable)</p>
+                            <p class="text-sm text-gray-600">Valid ID Compulsory. Only Indian Guests Allowed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-gray-50 p-5 rounded-lg border border-gray-200">
+                        <h4 class="font-bold text-gray-800 mb-3"><i class="fa-solid fa-money-bill-transfer text-green-600 mr-2"></i> Cancellation & Refund Policy</h4>
+                        <p class="text-xs text-gray-500 mb-3">Applicable only if 100% booking amount is paid.</p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Cancel 25 days before – <strong>125% Refund</strong></li>
+                            <li><i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-2"></i> Cancel 15 days before – <strong>50% Refund</strong></li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i> After 15 days – <strong>No Refund</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Sticky Pricing Widget -->
+            <div class="lg:col-span-1 relative">
+                <div class="sticky top-24 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                    
+                    <div class="flex items-baseline justify-between mb-4 pb-4 border-b border-gray-100">
+                        <div>
+                            <span class="text-3xl font-bold text-gray-900" id="w-priceWd">₹0</span>
+                            <span class="text-gray-500 text-sm">/ weekday</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        <div class="border border-gray-200 rounded-lg p-2">
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Check-In</label>
+                            <input type="date" id="checkin-date" class="w-full text-sm font-semibold text-gray-900 focus:outline-none">
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-2">
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Check-Out</label>
+                            <input type="date" id="checkout-date" class="w-full text-sm font-semibold text-gray-900 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-200">
+                            <span class="text-gray-700 font-medium">Weekday</span>
+                            <span class="font-bold text-gray-900" id="w-priceWd-2">₹0</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-red-50 p-3 rounded-lg border border-red-100">
+                            <span class="text-red-700 font-medium">Weekend</span>
+                            <span class="font-bold text-red-600" id="w-priceWe">₹0</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button onclick="bookViaWhatsApp()" class="w-full bg-[#25D366] text-white font-bold py-3 rounded-xl hover:bg-green-600 transition flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Check Availability
+                        </button>
+                        
+                        <button onclick="payViaUPI()" class="w-full bg-[#673AB7] text-white font-bold py-3 rounded-xl hover:bg-[#5E35B1] transition flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-qrcode text-xl"></i> Pay 60% Booking Advance
+                        </button>
+
+                        <button onclick="sharePage()" class="w-full bg-white border-2 border-gray-900 text-gray-900 font-bold py-3 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-share-nodes"></i> Share Villa
+                        </button>
+                    </div>
+                    
+                    <p class="text-center text-xs text-gray-400 mt-4 uppercase tracking-widest font-semibold">100% Booking Amount Required</p>
+                </div>
+            </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-200">
+                            <span class="text-gray-700 font-medium">Weekday Rate</span>
+                            <span class="font-bold text-gray-900" id="w-priceWd-2">₹0</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-red-50 p-3 rounded-lg border border-red-100">
+                            <span class="text-red-700 font-medium">Weekend Rate</span>
+                            <span class="font-bold text-red-600" id="w-priceWe">₹0</span>
+                        </div>
+                        <div class="text-xs text-center text-green-600 font-bold bg-green-50 py-2 rounded">
+                            🎉 20% Discount on 2+ days booking!
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <a id="whatsapp-btn" href="#" target="_blank" class="w-full bg-[#25D366] text-white font-bold py-3 rounded-xl hover:bg-green-600 transition flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Book via WhatsApp
+                        </a>
+                        <button onclick="sharePage()" class="w-full bg-white border-2 border-gray-900 text-gray-900 font-bold py-3 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-share-nodes"></i> Share Villa
+                        </button>
+                    </div>
+                    
+                    <p class="text-center text-xs text-gray-400 mt-4 uppercase tracking-widest font-semibold">100% Booking Amount Required</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Full Screen Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden flex-col justify-center items-center backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-gray-300 z-50 p-2"><i class="fa-solid fa-xmark"></i></button>
+        <button onclick="changeSlide(-1)" class="absolute left-2 md:left-10 text-white text-4xl hover:text-gray-300 z-50 p-4"><i class="fa-solid fa-chevron-left"></i></button>
+        
+        <img id="lightbox-img" src="" class="max-h-[85vh] max-w-[90vw] object-contain transition-transform duration-300 scale-95" alt="Preview">
+        
+        <button onclick="changeSlide(1)" class="absolute right-2 md:right-10 text-white text-4xl hover:text-gray-300 z-50 p-4"><i class="fa-solid fa-chevron-right"></i></button>
+        <div id="lightbox-counter" class="absolute bottom-6 text-white text-sm font-medium tracking-widest bg-black/50 px-4 py-2 rounded-full">1 / 1</div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="text-center py-32" style="display: none;">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Villa Not Found</h1>
+        <p class="text-gray-500 mb-6">We couldn't find the villa you were looking for.</p>
+        <a href="index.html" class="text-blue-600 font-bold hover:underline">Go back to homepage</a>
+    </div>
+
+    <script>
+        // =================================================================
+        // REPLACE THIS ARRAY WITH YOUR CODE FROM THE GRABBER TOOL
+        const villas = [
+    {
+        "id": "25",
+        "bhk": 1,
+        "title": "1 BEDROOM KESARI VILLA",
+        "loc": "KARJAT",
+        "priceWd": "2500",
+        "priceWe": "5500",
+        "img": "public/villa/697deba4b2c24.jpg",
+        "guests": "Max 3-4 Guests",
+        "gallery": [
+            "public/villa/697a078eb008d.jpg",
+            "public/villa/697a078eb0650.jpg",
+            "public/villa/697a078eb0995.jpg",
+            "public/villa/697a078eb0f11.jpg",
+            "public/villa/697a078eb1196.jpg",
+            "public/villa/697a078eb13cd.jpg",
+            "public/villa/697a078eb1bb7.jpg",
+            "public/villa/697a078eb1ed4.jpg",
+            "public/villa/697a078eb230a.jpg",
+            "public/villa/697a078eb25bd.jpg",
+            "public/villa/697a078eb285d.jpg",
+            "public/villa/697a078eb2f1a.jpg",
+            "public/villa/697a078eb3216.jpg",
+            "public/villa/697a078eb3460.jpg",
+            "public/villa/697a078eb36bb.jpg",
+            "public/villa/697a078eb3909.jpg",
+            "public/villa/697a078eb3e7c.jpg",
+            "public/villa/697a078eb4146.jpg",
+            "public/villa/697a078eb437f.jpg",
+            "public/villa/697deba4b2c24.jpg"
+        ]
+    },
+    {
+        "id": "24",
+        "bhk": 1,
+        "title": "1 BEDROOM HIWARE VILLA",
+        "loc": "KARJAT",
+        "priceWd": "2500",
+        "priceWe": "5500",
+        "img": "public/villa/697c496de583c.jpg",
+        "guests": "Max 3-4 Guests",
+        "gallery": [
+            "public/villa/697a03e394a67.jpg",
+            "public/villa/697a03e395796.jpg",
+            "public/villa/697a03e395bee.jpg",
+            "public/villa/697a03e395f18.jpg",
+            "public/villa/697a03e396236.jpg",
+            "public/villa/697a03e396563.jpg",
+            "public/villa/697a03e39687c.jpg",
+            "public/villa/697a03e396b0b.jpg",
+            "public/villa/697a03e396e49.jpg",
+            "public/villa/697a03e3975e3.jpg",
+            "public/villa/697a03e3978aa.jpg",
+            "public/villa/697a03e397b82.jpg",
+            "public/villa/697a03e397e71.jpg",
+            "public/villa/697a03e3985fe.jpg",
+            "public/villa/697a03e3989f6.jpg",
+            "public/villa/697a03e398d36.jpg",
+            "public/villa/697a03e39931f.jpg",
+            "public/villa/697a03e399652.jpg",
+            "public/villa/697a03e3998fa.jpg",
+            "public/villa/697a03e399bc3.jpg",
+            "public/villa/697c496de583c.jpg"
+        ]
+    },
+    {
+        "id": "16",
+        "bhk": 1,
+        "title": "1 BEDROOM SOMNA CASA",
+        "loc": "KARJAT",
+        "priceWd": "3000",
+        "priceWe": "6000",
+        "img": "public/villa/697de6820ce6d.jpg",
+        "guests": "Max 3-4 Guests",
+        "gallery": [
+            "public/villa/697c4c67e9ff3.jpg",
+            "public/villa/697c4c67ea5e2.jpg",
+            "public/villa/697c4c67ea897.jpg",
+            "public/villa/697c4c67eab7f.jpg",
+            "public/villa/697c4c67eadf0.jpg",
+            "public/villa/697c4c67eb0a0.jpg",
+            "public/villa/697c4c67eb358.jpg",
+            "public/villa/697c4c67ecc30.jpg",
+            "public/villa/697c4c67ed2f1.jpg",
+            "public/villa/697c4c67ed619.jpg",
+            "public/villa/697c4c67ed8ea.jpg",
+            "public/villa/697c4c67edbbc.jpg",
+            "public/villa/697c4c67edee6.jpg",
+            "public/villa/697c4c67ee378.jpg",
+            "public/villa/697c4c67ee667.jpg",
+            "public/villa/697c4c67ee92d.jpg",
+            "public/villa/697c4c67f31d8.jpg",
+            "public/villa/697c4c67f3675.jpg",
+            "public/villa/697c4c67f3983.jpg",
+            "public/villa/697c4c6800060.jpg",
+            "public/villa/697de6820ce6d.jpg"
+        ]
+    },
+    {
+        "id": "35",
+        "bhk": 2,
+        "title": "2 BHK SHREE FARMS",
+        "loc": "KARJAT",
+        "priceWd": "5500",
+        "priceWe": "9500",
+        "img": "public/villa/697dec1f0c65d.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a3bf075454.jpg",
+            "public/villa/697a3bf075991.jpg",
+            "public/villa/697a3bf075c3a.jpg",
+            "public/villa/697a3bf075e70.jpg",
+            "public/villa/697a3bf076092.jpg",
+            "public/villa/697a3bf076c2e.jpg",
+            "public/villa/697a3bf0770d4.jpg",
+            "public/villa/697a3bf0773df.jpg",
+            "public/villa/697a3bf07767f.jpg",
+            "public/villa/697a3bf0778e6.jpg",
+            "public/villa/697a3bf077b2b.jpg",
+            "public/villa/697a3bf077df0.jpg",
+            "public/villa/697a3bf078051.jpg",
+            "public/villa/697a3bf07826c.jpg",
+            "public/villa/697a3bf078bb0.jpg",
+            "public/villa/697a3bf078e31.jpg",
+            "public/villa/697a3bf079089.jpg",
+            "public/villa/697a3bf079314.jpg",
+            "public/villa/697a3bf079666.jpg",
+            "public/villa/697a3bf079942.jpg",
+            "public/villa/697dec1f0c65d.jpg"
+        ]
+    },
+    {
+        "id": "34",
+        "bhk": 2,
+        "title": "2 BHK SMOOKEY VILLA",
+        "loc": "IGATPURI",
+        "priceWd": "5000",
+        "priceWe": "8000",
+        "img": "public/villa/697a3b2fcbbb5.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a3b2fc69ac.jpg",
+            "public/villa/697a3b2fc6eae.jpg",
+            "public/villa/697a3b2fc7185.jpg",
+            "public/villa/697a3b2fc7956.jpg",
+            "public/villa/697a3b2fc7d32.jpg",
+            "public/villa/697a3b2fc807e.jpg",
+            "public/villa/697a3b2fc835c.jpg",
+            "public/villa/697a3b2fc8612.jpg",
+            "public/villa/697a3b2fc8e8d.jpg",
+            "public/villa/697a3b2fc91fa.jpg",
+            "public/villa/697a3b2fc95f1.jpg",
+            "public/villa/697a3b2fc98d9.jpg",
+            "public/villa/697a3b2fc9c23.jpg",
+            "public/villa/697a3b2fca51a.jpg",
+            "public/villa/697a3b2fca7ea.jpg",
+            "public/villa/697a3b2fcaa8d.jpg",
+            "public/villa/697a3b2fcad0f.jpg",
+            "public/villa/697a3b2fcb030.jpg",
+            "public/villa/697a3b2fcb801.jpg",
+            "public/villa/697a3b2fcbbb5.jpg"
+        ]
+    },
+    {
+        "id": "33",
+        "bhk": 2,
+        "title": "2 BHK ANVI VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "5000",
+        "priceWe": "9000",
+        "img": "public/villa/697a399c07787.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a399c0250f.jpg",
+            "public/villa/697a399c02b24.jpg",
+            "public/villa/697a399c02ef4.jpg",
+            "public/villa/697a399c031c8.jpg",
+            "public/villa/697a399c03492.jpg",
+            "public/villa/697a399c037d9.jpg",
+            "public/villa/697a399c03a33.jpg",
+            "public/villa/697a399c03c8c.jpg",
+            "public/villa/697a399c04851.jpg",
+            "public/villa/697a399c04c1e.jpg",
+            "public/villa/697a399c04f1f.jpg",
+            "public/villa/697a399c051b8.jpg",
+            "public/villa/697a399c05511.jpg",
+            "public/villa/697a399c058f5.jpg",
+            "public/villa/697a399c06192.jpg",
+            "public/villa/697a399c0662b.jpg",
+            "public/villa/697a399c0692c.jpg",
+            "public/villa/697a399c06c4b.jpg",
+            "public/villa/697a399c07434.jpg",
+            "public/villa/697a399c07787.jpg"
+        ]
+    },
+    {
+        "id": "32",
+        "bhk": 2,
+        "title": "2 BHK ZINGO VALLEY",
+        "loc": "IGATPURI",
+        "priceWd": "5000",
+        "priceWe": "9000",
+        "img": "public/villa/697a38d173697.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a38d170341.jpg",
+            "public/villa/697a38d170845.jpg",
+            "public/villa/697a38d170a7b.jpg",
+            "public/villa/697a38d170fa5.jpg",
+            "public/villa/697a38d1711c7.jpg",
+            "public/villa/697a38d1713b7.jpg",
+            "public/villa/697a38d1715df.jpg",
+            "public/villa/697a38d1717cd.jpg",
+            "public/villa/697a38d171c15.jpg",
+            "public/villa/697a38d171e27.jpg",
+            "public/villa/697a38d171ff5.jpg",
+            "public/villa/697a38d1721ef.jpg",
+            "public/villa/697a38d172605.jpg",
+            "public/villa/697a38d1727df.jpg",
+            "public/villa/697a38d1729db.jpg",
+            "public/villa/697a38d172b90.jpg",
+            "public/villa/697a38d172d49.jpg",
+            "public/villa/697a38d173248.jpg",
+            "public/villa/697a38d17342b.jpg",
+            "public/villa/697a38d173697.jpg"
+        ]
+    },
+    {
+        "id": "31",
+        "bhk": 2,
+        "title": "2 BHK DUNED DELIGHT",
+        "loc": "KARJAT",
+        "priceWd": "5500",
+        "priceWe": "9000",
+        "img": "public/villa/697a373e58b23.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a373e53595.jpg",
+            "public/villa/697a373e53aa7.jpg",
+            "public/villa/697a373e53d73.jpg",
+            "public/villa/697a373e54025.jpg",
+            "public/villa/697a373e551e4.jpg",
+            "public/villa/697a373e55668.jpg",
+            "public/villa/697a373e55a13.jpg",
+            "public/villa/697a373e55d39.jpg",
+            "public/villa/697a373e56045.jpg",
+            "public/villa/697a373e56877.jpg",
+            "public/villa/697a373e56be2.jpg",
+            "public/villa/697a373e56e98.jpg",
+            "public/villa/697a373e57153.jpg",
+            "public/villa/697a373e573e2.jpg",
+            "public/villa/697a373e5764b.jpg",
+            "public/villa/697a373e57d8c.jpg",
+            "public/villa/697a373e58055.jpg",
+            "public/villa/697a373e582b7.jpg",
+            "public/villa/697a373e5853d.jpg",
+            "public/villa/697a373e58b23.jpg"
+        ]
+    },
+    {
+        "id": "30",
+        "bhk": 2,
+        "title": "2 BHK SAPPHIRE SEASCAPE",
+        "loc": "KHANDALA",
+        "priceWd": "5500",
+        "priceWe": "9000",
+        "img": "public/villa/697a3530a1467.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a35309d35a.jpg",
+            "public/villa/697a35309d995.jpg",
+            "public/villa/697a35309dc7b.jpg",
+            "public/villa/697a35309e281.jpg",
+            "public/villa/697a35309e61a.jpg",
+            "public/villa/697a35309e8a7.jpg",
+            "public/villa/697a35309eae3.jpg",
+            "public/villa/697a35309f30f.jpg",
+            "public/villa/697a35309f5c2.jpg",
+            "public/villa/697a35309f930.jpg",
+            "public/villa/697a35309fbad.jpg",
+            "public/villa/697a3530a000d.jpg",
+            "public/villa/697a3530a05bb.jpg",
+            "public/villa/697a3530a0967.jpg",
+            "public/villa/697a3530a0d22.jpg",
+            "public/villa/697a3530a0f6c.jpg",
+            "public/villa/697a3530a119f.jpg",
+            "public/villa/697a3530a1467.jpg"
+        ]
+    },
+    {
+        "id": "28",
+        "bhk": 2,
+        "title": "2 BHK TOPICALTIDE",
+        "loc": "LONAVALA",
+        "priceWd": "5500",
+        "priceWe": "9000",
+        "img": "public/villa/697a327acb00a.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a327ac7494.jpg",
+            "public/villa/697a327ac796f.jpg",
+            "public/villa/697a327ac7c33.jpg",
+            "public/villa/697a327ac7ea1.jpg",
+            "public/villa/697a327ac8158.jpg",
+            "public/villa/697a327ac86e9.jpg",
+            "public/villa/697a327ac894a.jpg",
+            "public/villa/697a327ac8b27.jpg",
+            "public/villa/697a327ac91c6.jpg",
+            "public/villa/697a327ac9444.jpg",
+            "public/villa/697a327ac965f.jpg",
+            "public/villa/697a327ac98cf.jpg",
+            "public/villa/697a327ac9b16.jpg",
+            "public/villa/697a327ac9fb1.jpg",
+            "public/villa/697a327aca1e0.jpg",
+            "public/villa/697a327aca446.jpg",
+            "public/villa/697a327aca63e.jpg",
+            "public/villa/697a327aca86b.jpg",
+            "public/villa/697a327acad4a.jpg",
+            "public/villa/697a327acb00a.jpg"
+        ]
+    },
+    {
+        "id": "27",
+        "bhk": 2,
+        "title": "2 BHK RANGILA VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "5000",
+        "priceWe": "9000",
+        "img": "public/villa/697a1c1c93270.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a1c1c9079d.jpg",
+            "public/villa/697a1c1c90ceb.jpg",
+            "public/villa/697a1c1c90f50.jpg",
+            "public/villa/697a1c1c911c5.jpg",
+            "public/villa/697a1c1c9141a.jpg",
+            "public/villa/697a1c1c91607.jpg",
+            "public/villa/697a1c1c91b76.jpg",
+            "public/villa/697a1c1c91e11.jpg",
+            "public/villa/697a1c1c9203b.jpg",
+            "public/villa/697a1c1c922d4.jpg",
+            "public/villa/697a1c1c92513.jpg",
+            "public/villa/697a1c1c929b4.jpg",
+            "public/villa/697a1c1c92be4.jpg",
+            "public/villa/697a1c1c92e51.jpg",
+            "public/villa/697a1c1c9308e.jpg",
+            "public/villa/697a1c1c93270.jpg"
+        ]
+    },
+    {
+        "id": "26",
+        "bhk": 2,
+        "title": "2 BHK AVION HOLIDAY",
+        "loc": "KARJAT",
+        "priceWd": "5000",
+        "priceWe": "9000",
+        "img": "public/villa/697a0a5e6bb6c.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/697a0a5e66cee.jpg",
+            "public/villa/697a0a5e673af.jpg",
+            "public/villa/697a0a5e67757.jpg",
+            "public/villa/697a0a5e67a67.jpg",
+            "public/villa/697a0a5e67e34.jpg",
+            "public/villa/697a0a5e6878c.jpg",
+            "public/villa/697a0a5e68ac0.jpg",
+            "public/villa/697a0a5e68e5a.jpg",
+            "public/villa/697a0a5e69330.jpg",
+            "public/villa/697a0a5e696bb.jpg",
+            "public/villa/697a0a5e69e66.jpg",
+            "public/villa/697a0a5e6a382.jpg",
+            "public/villa/697a0a5e6a7e9.jpg",
+            "public/villa/697a0a5e6aab6.jpg",
+            "public/villa/697a0a5e6ad1f.jpg",
+            "public/villa/697a0a5e6b0ae.jpg",
+            "public/villa/697a0a5e6b335.jpg",
+            "public/villa/697a0a5e6b5a8.jpg",
+            "public/villa/697a0a5e6b887.jpg",
+            "public/villa/697a0a5e6bb6c.jpg"
+        ]
+    },
+    {
+        "id": "17",
+        "bhk": 2,
+        "title": "2 BHK ROYAL CRYSTAL",
+        "loc": "LONAVALA",
+        "priceWd": "5500",
+        "priceWe": "9500",
+        "img": "public/villa/6979c02550ae8.jpg",
+        "guests": "Max 7 Guests",
+        "gallery": [
+            "public/villa/6979c0254b020.jpg",
+            "public/villa/6979c0254b690.jpg",
+            "public/villa/6979c0254b97b.jpg",
+            "public/villa/6979c0254bc2f.jpg",
+            "public/villa/6979c0254c734.jpg",
+            "public/villa/6979c0254cc01.jpg",
+            "public/villa/6979c0254ced5.jpg",
+            "public/villa/6979c0254d1a1.jpg",
+            "public/villa/6979c0254d46b.jpg",
+            "public/villa/6979c0254d72f.jpg",
+            "public/villa/6979c0254f635.jpg",
+            "public/villa/6979c0254fa17.jpg",
+            "public/villa/6979c0254fd3d.jpg",
+            "public/villa/6979c02550015.jpg",
+            "public/villa/6979c02550376.jpg",
+            "public/villa/6979c02550ae8.jpg"
+        ]
+    },
+    {
+        "id": "84",
+        "bhk": 3,
+        "title": "3 BHK THAKWAD NIWAS",
+        "loc": "KARJAT",
+        "priceWd": "9000",
+        "priceWe": "15000",
+        "img": "public/villa/697f49a5ef5eb.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697f49a5e9ed6.jpg",
+            "public/villa/697f49a5eb455.jpg",
+            "public/villa/697f49a5eb942.jpg",
+            "public/villa/697f49a5ebd13.jpg",
+            "public/villa/697f49a5ebfe1.jpg",
+            "public/villa/697f49a5ec370.jpg",
+            "public/villa/697f49a5ed9bb.jpg",
+            "public/villa/697f49a5edee3.jpg",
+            "public/villa/697f49a5eeaf6.jpg",
+            "public/villa/697f49a5ef071.jpg",
+            "public/villa/697f49a5ef33c.jpg",
+            "public/villa/697f49a5ef5eb.jpg"
+        ]
+    },
+    {
+        "id": "45",
+        "bhk": 3,
+        "title": "3 BHK THE LAST RESORT",
+        "loc": "MAHABLESHWAR",
+        "priceWd": "8000",
+        "priceWe": "12000",
+        "img": "public/villa/697af073bd369.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697af073ba976.jpg",
+            "public/villa/697af073baeab.jpg",
+            "public/villa/697af073bb189.jpg",
+            "public/villa/697af073bb407.jpg",
+            "public/villa/697af073bb777.jpg",
+            "public/villa/697af073bb9ef.jpg",
+            "public/villa/697af073bbdea.jpg",
+            "public/villa/697af073bc11f.jpg",
+            "public/villa/697af073bc34d.jpg",
+            "public/villa/697af073bd369.jpg"
+        ]
+    },
+    {
+        "id": "44",
+        "bhk": 3,
+        "title": "3 BHK SUNFLOWER",
+        "loc": "LONAVALA",
+        "priceWd": "9000",
+        "priceWe": "16000",
+        "img": "public/villa/697ae8f5593c5.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697ae8f554a3c.jpg",
+            "public/villa/697ae8f55504a.jpg",
+            "public/villa/697ae8f5553a8.jpg",
+            "public/villa/697ae8f5556fa.jpg",
+            "public/villa/697ae8f5559fa.jpg",
+            "public/villa/697ae8f555de7.jpg",
+            "public/villa/697ae8f5564a0.jpg",
+            "public/villa/697ae8f5568aa.jpg",
+            "public/villa/697ae8f556bba.jpg",
+            "public/villa/697ae8f556e76.jpg",
+            "public/villa/697ae8f5571e2.jpg",
+            "public/villa/697ae8f5576f8.jpg",
+            "public/villa/697ae8f557a50.jpg",
+            "public/villa/697ae8f557d55.jpg",
+            "public/villa/697ae8f558084.jpg",
+            "public/villa/697ae8f5583cf.jpg",
+            "public/villa/697ae8f5589fd.jpg",
+            "public/villa/697ae8f558d64.jpg",
+            "public/villa/697ae8f559084.jpg",
+            "public/villa/697ae8f5593c5.jpg"
+        ]
+    },
+    {
+        "id": "43",
+        "bhk": 3,
+        "title": "3 BHK VIRAJ DHULE",
+        "loc": "LONAVALA",
+        "priceWd": "9000",
+        "priceWe": "16000",
+        "img": "public/villa/697fc6bb1dcb7.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697ae7973df1d.jpg",
+            "public/villa/697ae7973e305.jpg",
+            "public/villa/697ae7973e55c.jpg",
+            "public/villa/697ae7973e782.jpg",
+            "public/villa/697ae7973e98b.jpg",
+            "public/villa/697ae7973ebb1.jpg",
+            "public/villa/697ae7973ed98.jpg",
+            "public/villa/697ae7973f222.jpg",
+            "public/villa/697ae7973f90d.jpg",
+            "public/villa/697ae7973fb6a.jpg",
+            "public/villa/697ae7973fd6e.jpg",
+            "public/villa/697ae79740265.jpg",
+            "public/villa/697ae797404aa.jpg",
+            "public/villa/697ae79740705.jpg",
+            "public/villa/697ae79740989.jpg",
+            "public/villa/697ae79740b6d.jpg",
+            "public/villa/697ae79740d6f.jpg",
+            "public/villa/697ae79741251.jpg",
+            "public/villa/697ae79741454.jpg",
+            "public/villa/697fc6bb1dcb7.jpg"
+        ]
+    },
+    {
+        "id": "42",
+        "bhk": 3,
+        "title": "3 BHK THE LAKE HOUSE",
+        "loc": "LONAVALA",
+        "priceWd": "7000",
+        "priceWe": "10000",
+        "img": "public/villa/697ae6e82cc9d.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697ae6e827e19.jpg",
+            "public/villa/697ae6e8282fd.jpg",
+            "public/villa/697ae6e828513.jpg",
+            "public/villa/697ae6e82872a.jpg",
+            "public/villa/697ae6e8289b1.jpg",
+            "public/villa/697ae6e82903c.jpg",
+            "public/villa/697ae6e82927e.jpg",
+            "public/villa/697ae6e8294cc.jpg",
+            "public/villa/697ae6e8296f9.jpg",
+            "public/villa/697ae6e829917.jpg",
+            "public/villa/697ae6e82bbc9.jpg",
+            "public/villa/697ae6e82bec9.jpg",
+            "public/villa/697ae6e82c0ce.jpg",
+            "public/villa/697ae6e82c28c.jpg",
+            "public/villa/697ae6e82c46b.jpg",
+            "public/villa/697ae6e82c62d.jpg",
+            "public/villa/697ae6e82c841.jpg",
+            "public/villa/697ae6e82ca56.jpg",
+            "public/villa/697ae6e82cc9d.jpg"
+        ]
+    },
+    {
+        "id": "41",
+        "bhk": 3,
+        "title": "3 BHK VILLA OASIS",
+        "loc": "KARJAT",
+        "priceWd": "8500",
+        "priceWe": "15000",
+        "img": "public/villa/697a520e2f933.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697a520e2aeac.jpg",
+            "public/villa/697a520e2b45c.jpg",
+            "public/villa/697a520e2b7b6.jpg",
+            "public/villa/697a520e2be7f.jpg",
+            "public/villa/697a520e2c1ee.jpg",
+            "public/villa/697a520e2c4d6.jpg",
+            "public/villa/697a520e2c7e6.jpg",
+            "public/villa/697a520e2ca77.jpg",
+            "public/villa/697a520e2d01b.jpg",
+            "public/villa/697a520e2d31c.jpg",
+            "public/villa/697a520e2d5d6.jpg",
+            "public/villa/697a520e2d973.jpg",
+            "public/villa/697a520e2dc55.jpg",
+            "public/villa/697a520e2e1a9.jpg",
+            "public/villa/697a520e2e4e4.jpg",
+            "public/villa/697a520e2e813.jpg",
+            "public/villa/697a520e2ec8f.jpg",
+            "public/villa/697a520e2ef22.jpg",
+            "public/villa/697a520e2f62c.jpg",
+            "public/villa/697a520e2f933.jpg"
+        ]
+    },
+    {
+        "id": "40",
+        "bhk": 3,
+        "title": "3 BHK MERITASADORE",
+        "loc": "PANCHGANI",
+        "priceWd": "9000",
+        "priceWe": "14000",
+        "img": "public/villa/697a5066c4081.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697a5066be512.jpg",
+            "public/villa/697a5066be9df.jpg",
+            "public/villa/697a5066becc0.jpg",
+            "public/villa/697a5066beeec.jpg",
+            "public/villa/697a5066bf193.jpg",
+            "public/villa/697a5066bf3f6.jpg",
+            "public/villa/697a5066bf690.jpg",
+            "public/villa/697a5066bfffb.jpg",
+            "public/villa/697a5066c023f.jpg",
+            "public/villa/697a5066c047b.jpg",
+            "public/villa/697a5066c0a7e.jpg",
+            "public/villa/697a5066c0cc7.jpg",
+            "public/villa/697a5066c0ee2.jpg",
+            "public/villa/697a5066c10d1.jpg",
+            "public/villa/697a5066c1361.jpg",
+            "public/villa/697a5066c15dc.jpg",
+            "public/villa/697a5066c1822.jpg",
+            "public/villa/697a5066c1a91.jpg",
+            "public/villa/697a5066c3c2b.jpg",
+            "public/villa/697a5066c4081.jpg"
+        ]
+    },
+    {
+        "id": "39",
+        "bhk": 3,
+        "title": "3 BHK CLIFF SIDEAWAY",
+        "loc": "PANCHGANI",
+        "priceWd": "9000",
+        "priceWe": "14000",
+        "img": "public/villa/697a41b380265.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/697a41b37c416.jpg",
+            "public/villa/697a41b37c870.jpg",
+            "public/villa/697a41b37cada.jpg",
+            "public/villa/697a41b37cd9b.jpg",
+            "public/villa/697a41b37d04b.jpg",
+            "public/villa/697a41b37d2b6.jpg",
+            "public/villa/697a41b37d56c.jpg",
+            "public/villa/697a41b37daff.jpg",
+            "public/villa/697a41b37de33.jpg",
+            "public/villa/697a41b37e193.jpg",
+            "public/villa/697a41b37e3c1.jpg",
+            "public/villa/697a41b37e620.jpg",
+            "public/villa/697a41b37ed83.jpg",
+            "public/villa/697a41b37eff6.jpg",
+            "public/villa/697a41b37f25b.jpg",
+            "public/villa/697a41b37f4f1.jpg",
+            "public/villa/697a41b37f72a.jpg",
+            "public/villa/697a41b37f994.jpg",
+            "public/villa/697a41b37fc18.jpg",
+            "public/villa/697a41b380265.jpg"
+        ]
+    },
+    {
+        "id": "18",
+        "bhk": 3,
+        "title": "3 BHK PRINCESS VILLA",
+        "loc": "LONAVALA / PAWNA",
+        "priceWd": "12000",
+        "priceWe": "18000",
+        "img": "public/villa/697f1770d98ac.jpg",
+        "guests": "Max 10 Guests",
+        "gallery": [
+            "public/villa/6979f8d3a3176.jpg",
+            "public/villa/6979f8d3a3af8.jpg",
+            "public/villa/6979f8d3a3fe2.jpg",
+            "public/villa/6979f8d3a4470.jpg",
+            "public/villa/6979f8d3a4856.jpg",
+            "public/villa/6979f8d3a5277.jpg",
+            "public/villa/6979f8d3a5705.jpg",
+            "public/villa/6979f8d3a6602.jpg",
+            "public/villa/6979f8d3a6a72.jpg",
+            "public/villa/6979f8d3a779d.jpg",
+            "public/villa/6979f8d3a84de.jpg",
+            "public/villa/6979f8d3a8933.jpg",
+            "public/villa/6979f8d3a8cf8.jpg",
+            "public/villa/697f1770d98ac.jpg"
+        ]
+    },
+    {
+        "id": "54",
+        "bhk": 4,
+        "title": "4 BHK VIRA FARM",
+        "loc": "KARJAT",
+        "priceWd": "12000",
+        "priceWe": "24000",
+        "img": "public/villa/697f1311863a4.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697b0181bedcb.jpg",
+            "public/villa/697b0181bf231.jpg",
+            "public/villa/697b0181bf4ab.jpg",
+            "public/villa/697b0181bf6d9.jpg",
+            "public/villa/697b0181bfcaa.jpg",
+            "public/villa/697b0181bff3e.jpg",
+            "public/villa/697b0181c0133.jpg",
+            "public/villa/697b0181c03b0.jpg",
+            "public/villa/697b0181c0631.jpg",
+            "public/villa/697b0181c0d73.jpg",
+            "public/villa/697b0181c111c.jpg",
+            "public/villa/697b0181c1447.jpg",
+            "public/villa/697b0181c1710.jpg",
+            "public/villa/697b0181c1d0f.jpg",
+            "public/villa/697b0181c2005.jpg",
+            "public/villa/697b0181c22e4.jpg",
+            "public/villa/697b0181c254d.jpg",
+            "public/villa/697b0181c27f2.jpg",
+            "public/villa/697b0181c2a94.jpg",
+            "public/villa/697b0181c3041.jpg",
+            "public/villa/697f1311863a4.jpg"
+        ]
+    },
+    {
+        "id": "53",
+        "bhk": 4,
+        "title": "4 BHK ALING MASK",
+        "loc": "ALIBAUG",
+        "priceWd": "10000",
+        "priceWe": "18000",
+        "img": "public/villa/697aff08d532e.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697aff08d0f90.jpg",
+            "public/villa/697aff08d154c.jpg",
+            "public/villa/697aff08d17da.jpg",
+            "public/villa/697aff08d1dc1.jpg",
+            "public/villa/697aff08d2164.jpg",
+            "public/villa/697aff08d243d.jpg",
+            "public/villa/697aff08d2698.jpg",
+            "public/villa/697aff08d2906.jpg",
+            "public/villa/697aff08d2b23.jpg",
+            "public/villa/697aff08d2d88.jpg",
+            "public/villa/697aff08d2f8d.jpg",
+            "public/villa/697aff08d3207.jpg",
+            "public/villa/697aff08d38c3.jpg",
+            "public/villa/697aff08d3aef.jpg",
+            "public/villa/697aff08d3da1.jpg",
+            "public/villa/697aff08d437e.jpg",
+            "public/villa/697aff08d46ac.jpg",
+            "public/villa/697aff08d49a1.jpg",
+            "public/villa/697aff08d4c8c.jpg",
+            "public/villa/697aff08d532e.jpg"
+        ]
+    },
+    {
+        "id": "52",
+        "bhk": 4,
+        "title": "4 BHK DECK",
+        "loc": "PANCHGANI",
+        "priceWd": "16500",
+        "priceWe": "21000",
+        "img": "public/villa/697afe21e0fd0.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697afe21dcca2.jpg",
+            "public/villa/697afe21dd214.jpg",
+            "public/villa/697afe21dd4dc.jpg",
+            "public/villa/697afe21dd75b.jpg",
+            "public/villa/697afe21ddf13.jpg",
+            "public/villa/697afe21de22e.jpg",
+            "public/villa/697afe21de4ca.jpg",
+            "public/villa/697afe21de79c.jpg",
+            "public/villa/697afe21dea2a.jpg",
+            "public/villa/697afe21df284.jpg",
+            "public/villa/697afe21df54d.jpg",
+            "public/villa/697afe21df7b4.jpg",
+            "public/villa/697afe21df9f9.jpg",
+            "public/villa/697afe21dfca1.jpg",
+            "public/villa/697afe21e02a2.jpg",
+            "public/villa/697afe21e062f.jpg",
+            "public/villa/697afe21e0880.jpg",
+            "public/villa/697afe21e0abe.jpg",
+            "public/villa/697afe21e0d3b.jpg",
+            "public/villa/697afe21e0fd0.jpg"
+        ]
+    },
+    {
+        "id": "51",
+        "bhk": 4,
+        "title": "4 BHK BORN COTTAGE",
+        "loc": "LONAVALA",
+        "priceWd": "16000",
+        "priceWe": "21000",
+        "img": "public/villa/697afc6b2ef8e.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697afc6b2a3f2.jpg",
+            "public/villa/697afc6b2aa28.jpg",
+            "public/villa/697afc6b2ad2e.jpg",
+            "public/villa/697afc6b2afa6.jpg",
+            "public/villa/697afc6b2b6d9.jpg",
+            "public/villa/697afc6b2ba47.jpg",
+            "public/villa/697afc6b2bcd3.jpg",
+            "public/villa/697afc6b2bf4c.jpg",
+            "public/villa/697afc6b2c55c.jpg",
+            "public/villa/697afc6b2c926.jpg",
+            "public/villa/697afc6b2cb97.jpg",
+            "public/villa/697afc6b2ce73.jpg",
+            "public/villa/697afc6b2d092.jpg",
+            "public/villa/697afc6b2d72c.jpg",
+            "public/villa/697afc6b2db36.jpg",
+            "public/villa/697afc6b2de46.jpg",
+            "public/villa/697afc6b2e090.jpg",
+            "public/villa/697afc6b2e301.jpg",
+            "public/villa/697afc6b2ebc2.jpg",
+            "public/villa/697afc6b2ef8e.jpg"
+        ]
+    },
+    {
+        "id": "50",
+        "bhk": 4,
+        "title": "4 BHK NOVOTEL IMAGICA",
+        "loc": "PANCHGANI",
+        "priceWd": "12000",
+        "priceWe": "18000",
+        "img": "public/villa/697af8362bf38.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697af836283ef.jpg",
+            "public/villa/697af83628955.jpg",
+            "public/villa/697af83628e49.jpg",
+            "public/villa/697af8362907a.jpg",
+            "public/villa/697af836292de.jpg",
+            "public/villa/697af836299b7.jpg",
+            "public/villa/697af83629c58.jpg",
+            "public/villa/697af83629eaa.jpg",
+            "public/villa/697af8362a151.jpg",
+            "public/villa/697af8362a39a.jpg",
+            "public/villa/697af8362a5bf.jpg",
+            "public/villa/697af8362a7ed.jpg",
+            "public/villa/697af8362aa45.jpg",
+            "public/villa/697af8362acb6.jpg",
+            "public/villa/697af8362b140.jpg",
+            "public/villa/697af8362b413.jpg",
+            "public/villa/697af8362b5f0.jpg",
+            "public/villa/697af8362bb49.jpg",
+            "public/villa/697af8362bd32.jpg",
+            "public/villa/697af8362bf38.jpg"
+        ]
+    },
+    {
+        "id": "49",
+        "bhk": 4,
+        "title": "4 BHK IGNO CASA",
+        "loc": "IGATPURI",
+        "priceWd": "9500",
+        "priceWe": "16000",
+        "img": "public/villa/697af64a65de4.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697af64a63498.jpg",
+            "public/villa/697af64a63aa2.jpg",
+            "public/villa/697af64a64230.jpg",
+            "public/villa/697af64a6448c.jpg",
+            "public/villa/697af64a64738.jpg",
+            "public/villa/697af64a649a7.jpg",
+            "public/villa/697af64a64c04.jpg",
+            "public/villa/697af64a64e34.jpg",
+            "public/villa/697af64a650cf.jpg",
+            "public/villa/697af64a658f6.jpg",
+            "public/villa/697af64a65b95.jpg",
+            "public/villa/697af64a65de4.jpg"
+        ]
+    },
+    {
+        "id": "48",
+        "bhk": 4,
+        "title": "4 BHK CORN VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "10000",
+        "priceWe": "18000",
+        "img": "public/villa/697af5afbb342.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697af5afb7a02.jpg",
+            "public/villa/697af5afb7f57.jpg",
+            "public/villa/697af5afb81b6.jpg",
+            "public/villa/697af5afb8aba.jpg",
+            "public/villa/697af5afb8fe9.jpg",
+            "public/villa/697af5afb9408.jpg",
+            "public/villa/697af5afb9697.jpg",
+            "public/villa/697af5afb9878.jpg",
+            "public/villa/697af5afb9a5a.jpg",
+            "public/villa/697af5afba004.jpg",
+            "public/villa/697af5afba23b.jpg",
+            "public/villa/697af5afba424.jpg",
+            "public/villa/697af5afba704.jpg",
+            "public/villa/697af5afbabe6.jpg",
+            "public/villa/697af5afbae4d.jpg",
+            "public/villa/697af5afbb0c2.jpg",
+            "public/villa/697af5afbb342.jpg"
+        ]
+    },
+    {
+        "id": "47",
+        "bhk": 4,
+        "title": "4 BHK PUSHKAR NALAWADE",
+        "loc": "LONAVALA",
+        "priceWd": "10000",
+        "priceWe": "18000",
+        "img": "public/villa/697f3d0b5d7f4.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697af4b798449.jpg",
+            "public/villa/697af4b798836.jpg",
+            "public/villa/697af4b798a27.jpg",
+            "public/villa/697af4b798c12.jpg",
+            "public/villa/697af4b798e86.jpg",
+            "public/villa/697af4b799713.jpg",
+            "public/villa/697af4b79992a.jpg",
+            "public/villa/697af4b799e30.jpg",
+            "public/villa/697af4b79a056.jpg",
+            "public/villa/697af4b79a26e.jpg",
+            "public/villa/697af4b79a7fd.jpg",
+            "public/villa/697af4b79aa0c.jpg",
+            "public/villa/697af4b79abd9.jpg",
+            "public/villa/697af4b79adbc.jpg",
+            "public/villa/697af4b79b2ad.jpg",
+            "public/villa/697af4b79b491.jpg",
+            "public/villa/697af4b79b66c.jpg",
+            "public/villa/697af4b79b832.jpg",
+            "public/villa/697af4b79ba31.jpg",
+            "public/villa/697f3d0b5d7f4.jpg"
+        ]
+    },
+    {
+        "id": "46",
+        "bhk": 4,
+        "title": "4 BHK CRAZY BELL",
+        "loc": "KARJAT",
+        "priceWd": "10000",
+        "priceWe": "18000",
+        "img": "public/villa/697af16d591ac.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/697af16d55677.jpg",
+            "public/villa/697af16d55bfb.jpg",
+            "public/villa/697af16d55f0a.jpg",
+            "public/villa/697af16d561e1.jpg",
+            "public/villa/697af16d56491.jpg",
+            "public/villa/697af16d56715.jpg",
+            "public/villa/697af16d56fc7.jpg",
+            "public/villa/697af16d57289.jpg",
+            "public/villa/697af16d574ed.jpg",
+            "public/villa/697af16d57728.jpg",
+            "public/villa/697af16d57a77.jpg",
+            "public/villa/697af16d57d57.jpg",
+            "public/villa/697af16d58020.jpg",
+            "public/villa/697af16d582b3.jpg",
+            "public/villa/697af16d58598.jpg",
+            "public/villa/697af16d5890e.jpg",
+            "public/villa/697af16d58c64.jpg",
+            "public/villa/697af16d58f2d.jpg",
+            "public/villa/697af16d591ac.jpg"
+        ]
+    },
+    {
+        "id": "19",
+        "bhk": 4,
+        "title": "4 BHK EARTH FARM",
+        "loc": "LONAVALA / PAWNA",
+        "priceWd": "15000",
+        "priceWe": "22000",
+        "img": "public/villa/697f090e0f11d.jpg",
+        "guests": "Max 15 Guests",
+        "gallery": [
+            "public/villa/6979fba445ba6.jpg",
+            "public/villa/6979fba44615b.jpg",
+            "public/villa/6979fba44640e.jpg",
+            "public/villa/6979fba446771.jpg",
+            "public/villa/6979fba446a99.jpg",
+            "public/villa/6979fba4473d8.jpg",
+            "public/villa/6979fba4476c9.jpg",
+            "public/villa/6979fba4479ee.jpg",
+            "public/villa/6979fba447cfb.jpg",
+            "public/villa/6979fba447fb8.jpg",
+            "public/villa/6979fba448270.jpg",
+            "public/villa/6979fba448a90.jpg",
+            "public/villa/6979fba448d1a.jpg",
+            "public/villa/6979fba448f37.jpg",
+            "public/villa/6979fba449211.jpg",
+            "public/villa/6979fba4498c6.jpg",
+            "public/villa/6979fba449b06.jpg",
+            "public/villa/6979fba44a0cc.jpg",
+            "public/villa/6979fba44a40a.jpg",
+            "public/villa/6979fba44a705.jpg",
+            "public/villa/697f090e0f11d.jpg"
+        ]
+    },
+    {
+        "id": "89",
+        "bhk": 5,
+        "title": "5 BHK DREAMWOOD VILLA",
+        "loc": "PAWNA / LONAVALA",
+        "priceWd": "18000",
+        "priceWe": "28000",
+        "img": "public/villa/69c3f8de08ca0.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/698ef816c5248.jpg",
+            "public/villa/698ef816c586b.jpg",
+            "public/villa/698ef816c5c2a.jpg",
+            "public/villa/698ef816c5f4c.jpg",
+            "public/villa/698ef816c625a.jpg",
+            "public/villa/698ef816c69f3.jpg",
+            "public/villa/698ef816c6d0b.jpg",
+            "public/villa/698ef816c6fd5.jpg",
+            "public/villa/698ef816c72c5.jpg",
+            "public/villa/698ef816c75df.jpg",
+            "public/villa/698ef816c7ce4.jpg",
+            "public/villa/698ef816c7fe6.jpg",
+            "public/villa/698ef816c8274.jpg",
+            "public/villa/698ef816c8c13.jpg",
+            "public/villa/698ef816c8ef0.jpg",
+            "public/villa/698ef816c91dd.jpg",
+            "public/villa/698ef816c94f9.jpg",
+            "public/villa/698ef816c97c0.jpg",
+            "public/villa/698ef816c9a80.jpg",
+            "public/villa/69c3f8de08ca0.jpg"
+        ]
+    },
+    {
+        "id": "85",
+        "bhk": 5,
+        "title": "5 BHK VILAS SAKHARAM WAGHMARE",
+        "loc": "LONAVALA",
+        "priceWd": "25000",
+        "priceWe": "36000",
+        "img": "public/villa/69c3f94f8ce61.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/698e3b6a8029a.webp",
+            "public/villa/698e3bd75229b.webp",
+            "public/villa/698e3bd7528d0.webp",
+            "public/villa/698e3bd752d77.jpg",
+            "public/villa/698e3bd75303d.jpg",
+            "public/villa/698e3bd7532e0.jpg",
+            "public/villa/698e3bd753549.jpg",
+            "public/villa/698e3bd753833.jpg",
+            "public/villa/698e3bd753a98.jpg",
+            "public/villa/698e3bd753d20.jpg",
+            "public/villa/698e3bd75420d.jpg",
+            "public/villa/698e3bd7544e5.jpg",
+            "public/villa/698e3bd754807.jpg",
+            "public/villa/698e3bd754b57.jpg",
+            "public/villa/698e3bd755133.jpg",
+            "public/villa/698e3bd7556b2.jpg",
+            "public/villa/698e3bd7559e6.jpg",
+            "public/villa/698e3bd755cd6.jpg",
+            "public/villa/698e3bd755fee.jpg",
+            "public/villa/698e3bd756b73.jpg",
+            "public/villa/69c3f94f8ce61.jpg"
+        ]
+    },
+    {
+        "id": "64",
+        "bhk": 5,
+        "title": "5 BHK BREEZA BAND",
+        "loc": "KARJAT",
+        "priceWd": "17000",
+        "priceWe": "24000",
+        "img": "public/villa/697b3c3b68ef6.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b3c3b637f8.jpg",
+            "public/villa/697b3c3b63e90.jpg",
+            "public/villa/697b3c3b6418d.jpg",
+            "public/villa/697b3c3b64aaa.jpg",
+            "public/villa/697b3c3b64f70.jpg",
+            "public/villa/697b3c3b653d7.jpg",
+            "public/villa/697b3c3b65679.jpg",
+            "public/villa/697b3c3b65996.jpg",
+            "public/villa/697b3c3b661fe.jpg",
+            "public/villa/697b3c3b664c9.jpg",
+            "public/villa/697b3c3b66990.jpg",
+            "public/villa/697b3c3b66d70.jpg",
+            "public/villa/697b3c3b67023.jpg",
+            "public/villa/697b3c3b672bc.jpg",
+            "public/villa/697b3c3b67544.jpg",
+            "public/villa/697b3c3b67f8c.jpg",
+            "public/villa/697b3c3b68285.jpg",
+            "public/villa/697b3c3b686ff.jpg",
+            "public/villa/697b3c3b68979.jpg",
+            "public/villa/697b3c3b68ef6.jpg"
+        ]
+    },
+    {
+        "id": "63",
+        "bhk": 5,
+        "title": "5 BHK EKAYA FARMS",
+        "loc": "LONAVALA / PAWNA",
+        "priceWd": "16000",
+        "priceWe": "23000",
+        "img": "public/villa/697f450899339.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b3a32477f4.jpg",
+            "public/villa/697b3a324d3de.jpg",
+            "public/villa/697b3a324dd64.jpg",
+            "public/villa/697b3a324e0b0.jpg",
+            "public/villa/697b3a324e339.jpg",
+            "public/villa/697b3a324e539.jpg",
+            "public/villa/697b3a324e851.jpg",
+            "public/villa/697b3a324eaf4.jpg",
+            "public/villa/697b3a3250ccd.jpg",
+            "public/villa/697b3a32516f5.jpg",
+            "public/villa/697b3a3252303.jpg",
+            "public/villa/697b3a3253934.jpg",
+            "public/villa/697b3a3253db6.jpg",
+            "public/villa/697b3a3254049.jpg",
+            "public/villa/697b3a3255105.jpg",
+            "public/villa/697b3a3255d72.jpg",
+            "public/villa/697b3a3256171.jpg",
+            "public/villa/697b3a32564e5.jpg",
+            "public/villa/697b3a3256760.jpg",
+            "public/villa/697b3a32569d6.jpg",
+            "public/villa/697f450899339.jpg"
+        ]
+    },
+    {
+        "id": "62",
+        "bhk": 5,
+        "title": "5 BHK SEWAKET VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "14000",
+        "priceWe": "22000",
+        "img": "public/villa/697b397f37dc0.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b397f32837.jpg",
+            "public/villa/697b397f32e21.jpg",
+            "public/villa/697b397f33182.jpg",
+            "public/villa/697b397f33487.jpg",
+            "public/villa/697b397f337a0.jpg",
+            "public/villa/697b397f33aa0.jpg",
+            "public/villa/697b397f33d29.jpg",
+            "public/villa/697b397f343d3.jpg",
+            "public/villa/697b397f346ef.jpg",
+            "public/villa/697b397f349a3.jpg",
+            "public/villa/697b397f34c3c.jpg",
+            "public/villa/697b397f34f44.jpg",
+            "public/villa/697b397f35592.jpg",
+            "public/villa/697b397f35d78.jpg",
+            "public/villa/697b397f36664.jpg",
+            "public/villa/697b397f369ba.jpg",
+            "public/villa/697b397f36c60.jpg",
+            "public/villa/697b397f36ef9.jpg",
+            "public/villa/697b397f371b8.jpg",
+            "public/villa/697b397f37dc0.jpg"
+        ]
+    },
+    {
+        "id": "61",
+        "bhk": 5,
+        "title": "5 BHK SOMNA VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "14000",
+        "priceWe": "22000",
+        "img": "public/villa/697b38d773a32.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b38d76f70f.jpg",
+            "public/villa/697b38d76fe6a.jpg",
+            "public/villa/697b38d770126.jpg",
+            "public/villa/697b38d7703d1.jpg",
+            "public/villa/697b38d7706c4.jpg",
+            "public/villa/697b38d770f7e.jpg",
+            "public/villa/697b38d771227.jpg",
+            "public/villa/697b38d7714db.jpg",
+            "public/villa/697b38d771755.jpg",
+            "public/villa/697b38d7719c8.jpg",
+            "public/villa/697b38d771c46.jpg",
+            "public/villa/697b38d771ec6.jpg",
+            "public/villa/697b38d77216d.jpg",
+            "public/villa/697b38d7723cc.jpg",
+            "public/villa/697b38d772647.jpg",
+            "public/villa/697b38d7728b6.jpg",
+            "public/villa/697b38d772b6d.jpg",
+            "public/villa/697b38d773437.jpg",
+            "public/villa/697b38d773746.jpg",
+            "public/villa/697b38d773a32.jpg"
+        ]
+    },
+    {
+        "id": "60",
+        "bhk": 5,
+        "title": "5 BHK DOLCEVITA",
+        "loc": "LONAVALA",
+        "priceWd": "16000",
+        "priceWe": "26000",
+        "img": "public/villa/697b370a0a3ef.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b370a0659e.jpg",
+            "public/villa/697b370a06ccc.jpg",
+            "public/villa/697b370a07052.jpg",
+            "public/villa/697b370a0736c.jpg",
+            "public/villa/697b370a07623.jpg",
+            "public/villa/697b370a07883.jpg",
+            "public/villa/697b370a08094.jpg",
+            "public/villa/697b370a0840b.jpg",
+            "public/villa/697b370a0868b.jpg",
+            "public/villa/697b370a08c2a.jpg",
+            "public/villa/697b370a08f71.jpg",
+            "public/villa/697b370a091e8.jpg",
+            "public/villa/697b370a09587.jpg",
+            "public/villa/697b370a098bf.jpg",
+            "public/villa/697b370a09ea3.jpg",
+            "public/villa/697b370a0a0f3.jpg",
+            "public/villa/697b370a0a3ef.jpg"
+        ]
+    },
+    {
+        "id": "59",
+        "bhk": 5,
+        "title": "5 BHK BAMBLE VILLA",
+        "loc": "IGATPURI",
+        "priceWd": "15000",
+        "priceWe": "23000",
+        "img": "public/villa/697f3a6c6a8ca.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b364258b93.jpg",
+            "public/villa/697b3642590b9.jpg",
+            "public/villa/697b364259301.jpg",
+            "public/villa/697b364259a3e.jpg",
+            "public/villa/697b364259cd6.jpg",
+            "public/villa/697b36425a069.jpg",
+            "public/villa/697b36425a321.jpg",
+            "public/villa/697b36425a5f7.jpg",
+            "public/villa/697b36425ad77.jpg",
+            "public/villa/697b36425b04a.jpg",
+            "public/villa/697b36425b30a.jpg",
+            "public/villa/697b36425b64b.jpg",
+            "public/villa/697b36425be9f.jpg",
+            "public/villa/697b36425c1f7.jpg",
+            "public/villa/697b36425c4f3.jpg",
+            "public/villa/697b36425c826.jpg",
+            "public/villa/697b36425ca9d.jpg",
+            "public/villa/697b36425cd9e.jpg",
+            "public/villa/697b36425d32e.jpg",
+            "public/villa/697b36425d66b.jpg",
+            "public/villa/697f3a6c6a8ca.jpg"
+        ]
+    },
+    {
+        "id": "58",
+        "bhk": 5,
+        "title": "5 BHK LIGO VILLA",
+        "loc": "KARJAT",
+        "priceWd": "13000",
+        "priceWe": "25000",
+        "img": "public/villa/697b3549c3010.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b3549bea7c.jpg",
+            "public/villa/697b3549beef1.jpg",
+            "public/villa/697b3549bf180.jpg",
+            "public/villa/697b3549bf3ee.jpg",
+            "public/villa/697b3549bf623.jpg",
+            "public/villa/697b3549bf865.jpg",
+            "public/villa/697b3549bfa9b.jpg",
+            "public/villa/697b3549c0553.jpg",
+            "public/villa/697b3549c07b7.jpg",
+            "public/villa/697b3549c09f6.jpg",
+            "public/villa/697b3549c0c51.jpg",
+            "public/villa/697b3549c12b4.jpg",
+            "public/villa/697b3549c1512.jpg",
+            "public/villa/697b3549c1784.jpg",
+            "public/villa/697b3549c1b76.jpg",
+            "public/villa/697b3549c2305.jpg",
+            "public/villa/697b3549c2574.jpg",
+            "public/villa/697b3549c28fe.jpg",
+            "public/villa/697b3549c2c89.jpg",
+            "public/villa/697b3549c3010.jpg"
+        ]
+    },
+    {
+        "id": "57",
+        "bhk": 5,
+        "title": "5 BHK MARHABA VILLA",
+        "loc": "MAHABLESHWAR",
+        "priceWd": "18000",
+        "priceWe": "28000",
+        "img": "public/villa/697b3364da2b5.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b3364d2dad.jpg",
+            "public/villa/697b3364d3395.jpg",
+            "public/villa/697b3364d377c.jpg",
+            "public/villa/697b3364d3aae.jpg",
+            "public/villa/697b3364d3e0c.jpg",
+            "public/villa/697b3364d48c6.jpg",
+            "public/villa/697b3364d4e65.jpg",
+            "public/villa/697b3364d52d0.jpg",
+            "public/villa/697b3364d5658.jpg",
+            "public/villa/697b3364d5ff7.jpg",
+            "public/villa/697b3364d6726.jpg",
+            "public/villa/697b3364d6cd3.jpg",
+            "public/villa/697b3364d7015.jpg",
+            "public/villa/697b3364d7654.jpg",
+            "public/villa/697b3364d7b68.jpg",
+            "public/villa/697b3364d8698.jpg",
+            "public/villa/697b3364d8c7c.jpg",
+            "public/villa/697b3364d90b4.jpg",
+            "public/villa/697b3364d954f.jpg",
+            "public/villa/697b3364da2b5.jpg"
+        ]
+    },
+    {
+        "id": "56",
+        "bhk": 5,
+        "title": "5 BHK KAMISAT VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "13000",
+        "priceWe": "25000",
+        "img": "public/villa/697b316961de8.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b31695e96a.jpg",
+            "public/villa/697b31695ed5a.jpg",
+            "public/villa/697b31695ef5f.jpg",
+            "public/villa/697b31695f191.jpg",
+            "public/villa/697b31695f384.jpg",
+            "public/villa/697b31695f563.jpg",
+            "public/villa/697b31695f741.jpg",
+            "public/villa/697b31695f919.jpg",
+            "public/villa/697b31695ff66.jpg",
+            "public/villa/697b31696017a.jpg",
+            "public/villa/697b316960361.jpg",
+            "public/villa/697b31696055a.jpg",
+            "public/villa/697b316960a36.jpg",
+            "public/villa/697b316960cd1.jpg",
+            "public/villa/697b316960f5c.jpg",
+            "public/villa/697b3169611eb.jpg",
+            "public/villa/697b31696144e.jpg",
+            "public/villa/697b316961922.jpg",
+            "public/villa/697b316961b82.jpg",
+            "public/villa/697b316961de8.jpg"
+        ]
+    },
+    {
+        "id": "55",
+        "bhk": 5,
+        "title": "5 BHK DRIFTWOOD",
+        "loc": "PANCHGANI",
+        "priceWd": "17000",
+        "priceWe": "24000",
+        "img": "public/villa/697b2f61a1b27.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/697b2f619c928.jpg",
+            "public/villa/697b2f619ce7d.jpg",
+            "public/villa/697b2f619d1d4.jpg",
+            "public/villa/697b2f619d569.jpg",
+            "public/villa/697b2f619d84f.jpg",
+            "public/villa/697b2f619db94.jpg",
+            "public/villa/697b2f619e597.jpg",
+            "public/villa/697b2f619e91e.jpg",
+            "public/villa/697b2f619eccf.jpg",
+            "public/villa/697b2f619f3ee.jpg",
+            "public/villa/697b2f619f8a3.jpg",
+            "public/villa/697b2f619fc28.jpg",
+            "public/villa/697b2f619ff83.jpg",
+            "public/villa/697b2f61a02e0.jpg",
+            "public/villa/697b2f61a067d.jpg",
+            "public/villa/697b2f61a0d85.jpg",
+            "public/villa/697b2f61a1108.jpg",
+            "public/villa/697b2f61a146e.jpg",
+            "public/villa/697b2f61a17e9.jpg",
+            "public/villa/697b2f61a1b27.jpg"
+        ]
+    },
+    {
+        "id": "20",
+        "bhk": 5,
+        "title": "5 BHK BATCOMB",
+        "loc": "KARJAT",
+        "priceWd": "18500",
+        "priceWe": "28000",
+        "img": "public/villa/6979fd053adde.jpg",
+        "guests": "Max 20 Guests",
+        "gallery": [
+            "public/villa/6979fd05365d7.jpg",
+            "public/villa/6979fd0536af0.jpg",
+            "public/villa/6979fd0536e0e.jpg",
+            "public/villa/6979fd053782c.jpg",
+            "public/villa/6979fd0537aa0.jpg",
+            "public/villa/6979fd0537cf6.jpg",
+            "public/villa/6979fd0537f03.jpg",
+            "public/villa/6979fd0538148.jpg",
+            "public/villa/6979fd05383aa.jpg",
+            "public/villa/6979fd053905c.jpg",
+            "public/villa/6979fd05392d5.jpg",
+            "public/villa/6979fd0539564.jpg",
+            "public/villa/6979fd05397a4.jpg",
+            "public/villa/6979fd0539d44.jpg",
+            "public/villa/6979fd0539f71.jpg",
+            "public/villa/6979fd053a1b1.jpg",
+            "public/villa/6979fd053a420.jpg",
+            "public/villa/6979fd053a63a.jpg",
+            "public/villa/6979fd053ab80.jpg",
+            "public/villa/6979fd053adde.jpg"
+        ]
+    },
+    {
+        "id": "88",
+        "bhk": 6,
+        "title": "6 BHK DUBASH FARM",
+        "loc": "MAHABLESHWAR",
+        "priceWd": "20000",
+        "priceWe": "35000",
+        "img": "public/villa/69c3f8c083d18.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/698ef6ab33bfe.jpg",
+            "public/villa/698ef6ab340fd.jpg",
+            "public/villa/698ef6ab34359.jpg",
+            "public/villa/698ef6ab3454d.jpg",
+            "public/villa/698ef6ab34760.jpg",
+            "public/villa/698ef6ab34bd5.jpg",
+            "public/villa/698ef6ab34e27.jpg",
+            "public/villa/698ef6ab350e0.jpg",
+            "public/villa/698ef6ab35344.jpg",
+            "public/villa/698ef6ab3559b.jpg",
+            "public/villa/698ef6ab35baa.jpg",
+            "public/villa/698ef6ab35e0c.jpg",
+            "public/villa/698ef6ab360fe.jpg",
+            "public/villa/698ef6ab3635d.jpg",
+            "public/villa/698ef6ab36b3b.jpg",
+            "public/villa/698ef6ab36dd3.jpg",
+            "public/villa/698ef6ab370a6.jpg",
+            "public/villa/698ef6ab372fa.jpg",
+            "public/villa/69c3f8c083d18.jpg"
+        ]
+    },
+    {
+        "id": "87",
+        "bhk": 6,
+        "title": "6 BHK GLASS HOUSE",
+        "loc": "PAWNA / LONAVALA",
+        "priceWd": "22000",
+        "priceWe": "39000",
+        "img": "public/villa/69c3f90b7e4d3.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/698ef60bc9d5e.jpg",
+            "public/villa/698ef60bca45e.jpg",
+            "public/villa/698ef60bca78f.jpg",
+            "public/villa/698ef60bcaa6f.jpg",
+            "public/villa/698ef60bcad73.jpg",
+            "public/villa/698ef60bcb090.jpg",
+            "public/villa/698ef60bcb62b.jpg",
+            "public/villa/698ef60bcb953.jpg",
+            "public/villa/698ef60bcbc4c.jpg",
+            "public/villa/698ef60bcbed6.jpg",
+            "public/villa/698ef60bcc1d3.jpg",
+            "public/villa/698ef60bcc57d.jpg",
+            "public/villa/698ef60bcc946.jpg",
+            "public/villa/698ef60bccc12.jpg",
+            "public/villa/698ef60bcce32.jpg",
+            "public/villa/698ef60bcd0a8.jpg",
+            "public/villa/698ef60bcd5f0.jpg",
+            "public/villa/698ef60bcd8da.jpg",
+            "public/villa/698ef60bcdb4a.jpg",
+            "public/villa/69c3f90b7e4d3.jpg"
+        ]
+    },
+    {
+        "id": "69",
+        "bhk": 6,
+        "title": "6 BHK PERCHE OFFGRID",
+        "loc": "LONAVALA / PAWNA",
+        "priceWd": "23000",
+        "priceWe": "39000",
+        "img": "public/villa/697f084cb5b66.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/697c526dd09bb.jpg",
+            "public/villa/697c526dd0e13.jpg",
+            "public/villa/697c526dd1034.jpg",
+            "public/villa/697c526dd1240.jpg",
+            "public/villa/697c526dd1427.jpg",
+            "public/villa/697c526dd19d7.jpg",
+            "public/villa/697c526dd1c2e.jpg",
+            "public/villa/697c526dd1e19.jpg",
+            "public/villa/697c526dd2299.jpg",
+            "public/villa/697c526dd24ed.jpg",
+            "public/villa/697c526dd26eb.jpg",
+            "public/villa/697c526dd294b.jpg",
+            "public/villa/697c526dd2b1a.jpg",
+            "public/villa/697c526dd2d18.jpg",
+            "public/villa/697c526dd30d7.jpg",
+            "public/villa/697c526dd3341.jpg",
+            "public/villa/697c526dd356a.jpg",
+            "public/villa/697c526dd3753.jpg",
+            "public/villa/697c526dd3be6.jpg",
+            "public/villa/697c526dd3eed.jpg",
+            "public/villa/697f084cb5b66.jpg"
+        ]
+    },
+    {
+        "id": "68",
+        "bhk": 6,
+        "title": "6 BHK BHUBTARA",
+        "loc": "LONAVALA",
+        "priceWd": "22000",
+        "priceWe": "39000",
+        "img": "public/villa/697f13c93e07b.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/697c519257801.jpg",
+            "public/villa/697c519257e53.jpg",
+            "public/villa/697c519258157.jpg",
+            "public/villa/697c519258441.jpg",
+            "public/villa/697c519258708.jpg",
+            "public/villa/697c519258999.jpg",
+            "public/villa/697c5192590b9.jpg",
+            "public/villa/697c519259371.jpg",
+            "public/villa/697c5192595fa.jpg",
+            "public/villa/697c5192598a3.jpg",
+            "public/villa/697c519259ad4.jpg",
+            "public/villa/697c51925a122.jpg",
+            "public/villa/697c51925a46b.jpg",
+            "public/villa/697c51925a692.jpg",
+            "public/villa/697c51925a8ca.jpg",
+            "public/villa/697c51925ab22.jpg",
+            "public/villa/697f13c93e07b.jpg"
+        ]
+    },
+    {
+        "id": "67",
+        "bhk": 6,
+        "title": "6 BHK LAKDAWALA BUNGALOW",
+        "loc": "LONAVALA",
+        "priceWd": "20000",
+        "priceWe": "38000",
+        "img": "public/villa/697f3c2842990.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/697c5065ed6e0.jpg",
+            "public/villa/697c5065edc25.jpg",
+            "public/villa/697c5065edff3.jpg",
+            "public/villa/697c5065ee386.jpg",
+            "public/villa/697c5065ee5e9.jpg",
+            "public/villa/697c5065eee15.jpg",
+            "public/villa/697c5065ef0e0.jpg",
+            "public/villa/697c5065efb62.jpg",
+            "public/villa/697c5065efe14.jpg",
+            "public/villa/697c5065f0136.jpg",
+            "public/villa/697c5065f03f1.jpg",
+            "public/villa/697c5065f05fb.jpg",
+            "public/villa/697c5065f0803.jpg",
+            "public/villa/697c5065f1158.jpg",
+            "public/villa/697c5065f16c6.jpg",
+            "public/villa/697c5065f1981.jpg",
+            "public/villa/697c5065f1bb7.jpg",
+            "public/villa/697c5065f1eb6.jpg",
+            "public/villa/697c5065f2bd1.jpg",
+            "public/villa/697c5065f3060.jpg",
+            "public/villa/697f3c2842990.jpg"
+        ]
+    },
+    {
+        "id": "66",
+        "bhk": 6,
+        "title": "6 BHK HOUSEN VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "19500",
+        "priceWe": "28000",
+        "img": "public/villa/697c4f67ad930.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/697c4f67a9915.jpg",
+            "public/villa/697c4f67a9e85.jpg",
+            "public/villa/697c4f67aa43e.jpg",
+            "public/villa/697c4f67aa8c9.jpg",
+            "public/villa/697c4f67ab0e0.jpg",
+            "public/villa/697c4f67ab332.jpg",
+            "public/villa/697c4f67abdbf.jpg",
+            "public/villa/697c4f67ac027.jpg",
+            "public/villa/697c4f67ac24c.jpg",
+            "public/villa/697c4f67ac776.jpg",
+            "public/villa/697c4f67ac996.jpg",
+            "public/villa/697c4f67acea1.jpg",
+            "public/villa/697c4f67ad0d8.jpg",
+            "public/villa/697c4f67ad713.jpg",
+            "public/villa/697c4f67ad930.jpg"
+        ]
+    },
+    {
+        "id": "65",
+        "bhk": 6,
+        "title": "6 BHK BLACK STONE VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "16500",
+        "priceWe": "28500",
+        "img": "public/villa/697c4e359d6e4.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/697c4e359a180.jpg",
+            "public/villa/697c4e359a666.jpg",
+            "public/villa/697c4e359a892.jpg",
+            "public/villa/697c4e359aa96.jpg",
+            "public/villa/697c4e359afca.jpg",
+            "public/villa/697c4e359b23a.jpg",
+            "public/villa/697c4e359b472.jpg",
+            "public/villa/697c4e359b777.jpg",
+            "public/villa/697c4e359b9a3.jpg",
+            "public/villa/697c4e359be03.jpg",
+            "public/villa/697c4e359c041.jpg",
+            "public/villa/697c4e359c2a5.jpg",
+            "public/villa/697c4e359c4ad.jpg",
+            "public/villa/697c4e359c6c7.jpg",
+            "public/villa/697c4e359c8c3.jpg",
+            "public/villa/697c4e359cac6.jpg",
+            "public/villa/697c4e359cf76.jpg",
+            "public/villa/697c4e359d210.jpg",
+            "public/villa/697c4e359d484.jpg",
+            "public/villa/697c4e359d6e4.jpg"
+        ]
+    },
+    {
+        "id": "21",
+        "bhk": 6,
+        "title": "6 BHK MASK STONE",
+        "loc": "KARJAT",
+        "priceWd": "24000",
+        "priceWe": "42000",
+        "img": "public/villa/6979fe54aa120.jpg",
+        "guests": "Max 26 Guests",
+        "gallery": [
+            "public/villa/6979fe54a5927.jpg",
+            "public/villa/6979fe54a5fa2.jpg",
+            "public/villa/6979fe54a62ad.jpg",
+            "public/villa/6979fe54a6c85.jpg",
+            "public/villa/6979fe54a710c.jpg",
+            "public/villa/6979fe54a7471.jpg",
+            "public/villa/6979fe54a7727.jpg",
+            "public/villa/6979fe54a7e7c.jpg",
+            "public/villa/6979fe54a81f4.jpg",
+            "public/villa/6979fe54a84b4.jpg",
+            "public/villa/6979fe54a8733.jpg",
+            "public/villa/6979fe54a8f90.jpg",
+            "public/villa/6979fe54a91d9.jpg",
+            "public/villa/6979fe54a93ff.jpg",
+            "public/villa/6979fe54a965e.jpg",
+            "public/villa/6979fe54a98b1.jpg",
+            "public/villa/6979fe54a9ac8.jpg",
+            "public/villa/6979fe54a9d29.jpg",
+            "public/villa/6979fe54a9f0c.jpg",
+            "public/villa/6979fe54aa120.jpg"
+        ]
+    },
+    {
+        "id": "83",
+        "bhk": 7,
+        "title": "7 BHK THE WHITE HELL",
+        "loc": "KARJAT",
+        "priceWd": "28000",
+        "priceWe": "42000",
+        "img": "public/villa/69c3f9774c0cb.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/697c8bd128f54.jpg",
+            "public/villa/697c8bd1299ae.jpg",
+            "public/villa/697c8bd129cfd.jpg",
+            "public/villa/697c8bd129f5d.jpg",
+            "public/villa/697c8bd12a1fb.jpg",
+            "public/villa/697c8bd12a48b.jpg",
+            "public/villa/697c8bd12a772.jpg",
+            "public/villa/697c8bd12c4ab.jpg",
+            "public/villa/697c8bd12ca02.jpg",
+            "public/villa/697c8bd12cd02.jpg",
+            "public/villa/697c8bd12cfa2.jpg",
+            "public/villa/697c8bd12d2ae.jpg",
+            "public/villa/697c8bd12d800.jpg",
+            "public/villa/697c8bd12e13f.jpg",
+            "public/villa/697c8bd12e580.jpg",
+            "public/villa/697c8bd12e8a3.jpg",
+            "public/villa/697c8bd12ecaf.jpg",
+            "public/villa/697c8bd12f3a5.jpg",
+            "public/villa/697c8bd12f68b.jpg",
+            "public/villa/697c8bd12f99e.jpg",
+            "public/villa/69c3f9774c0cb.jpg"
+        ]
+    },
+    {
+        "id": "74",
+        "bhk": 7,
+        "title": "7 BHK JIWA VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "20000",
+        "priceWe": "32000",
+        "img": "public/villa/69c3fa2e60b39.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/697c588db0c45.jpg",
+            "public/villa/697c588db11e1.jpg",
+            "public/villa/697c588db1488.jpg",
+            "public/villa/697c588db16cf.jpg",
+            "public/villa/697c588db1f1c.jpg",
+            "public/villa/697c588db2225.jpg",
+            "public/villa/697c588db24ad.jpg",
+            "public/villa/697c588db271a.jpg",
+            "public/villa/697c588db2dde.jpg",
+            "public/villa/697c588db3100.jpg",
+            "public/villa/697c588db3336.jpg",
+            "public/villa/697c588db35b9.jpg",
+            "public/villa/697c588db3840.jpg",
+            "public/villa/697c588db3b24.jpg",
+            "public/villa/697c588db40a4.jpg",
+            "public/villa/697c588db4358.jpg",
+            "public/villa/697c588db461b.jpg",
+            "public/villa/697c588db48e1.jpg",
+            "public/villa/697c588db4f4c.jpg",
+            "public/villa/697c588db526b.jpg",
+            "public/villa/69c3fa2e60b39.jpg"
+        ]
+    },
+    {
+        "id": "73",
+        "bhk": 7,
+        "title": "7 BHK HARSI VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "28000",
+        "priceWe": "48000",
+        "img": "public/villa/697c57abf00cd.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/697c57abebfea.jpg",
+            "public/villa/697c57abec585.jpg",
+            "public/villa/697c57abec838.jpg",
+            "public/villa/697c57abece93.jpg",
+            "public/villa/697c57abed0e2.jpg",
+            "public/villa/697c57abed370.jpg",
+            "public/villa/697c57abed5e3.jpg",
+            "public/villa/697c57abed860.jpg",
+            "public/villa/697c57abedda4.jpg",
+            "public/villa/697c57abedfe6.jpg",
+            "public/villa/697c57abee244.jpg",
+            "public/villa/697c57abee49f.jpg",
+            "public/villa/697c57abee71d.jpg",
+            "public/villa/697c57abeedc7.jpg",
+            "public/villa/697c57abef038.jpg",
+            "public/villa/697c57abef518.jpg",
+            "public/villa/697c57abef760.jpg",
+            "public/villa/697c57abef993.jpg",
+            "public/villa/697c57abefe71.jpg",
+            "public/villa/697c57abf00cd.jpg"
+        ]
+    },
+    {
+        "id": "72",
+        "bhk": 7,
+        "title": "7 BHK BUDDHA VIHAR",
+        "loc": "KARJAT",
+        "priceWd": "28000",
+        "priceWe": "48000",
+        "img": "public/villa/697f0a42523a9.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/697c5700e2dfa.jpg",
+            "public/villa/697c5700e33a5.jpg",
+            "public/villa/697c5700e3766.jpg",
+            "public/villa/697c5700e3a96.jpg",
+            "public/villa/697c5700e3d85.jpg",
+            "public/villa/697c5700e404a.jpg",
+            "public/villa/697c5700e4398.jpg",
+            "public/villa/697c5700e4784.jpg",
+            "public/villa/697c5700e4ffb.jpg",
+            "public/villa/697c5700e557d.jpg",
+            "public/villa/697c5700e5a0e.jpg",
+            "public/villa/697c5700e6565.jpg",
+            "public/villa/697c5700e7284.jpg",
+            "public/villa/697c5700e77cc.jpg",
+            "public/villa/697c5700e7ad7.jpg",
+            "public/villa/697c5700e85c6.jpg",
+            "public/villa/697c5700e8a5f.jpg",
+            "public/villa/697c5700e8d76.jpg",
+            "public/villa/697c5700e9842.jpg",
+            "public/villa/697f0a42523a9.jpg"
+        ]
+    },
+    {
+        "id": "71",
+        "bhk": 7,
+        "title": "7 BHK LUXURY HUT VILLA",
+        "loc": "KARJAT",
+        "priceWd": "52000",
+        "priceWe": "90000",
+        "img": "public/villa/697c55c302d4e.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/697c55c2f328c.jpg",
+            "public/villa/697c55c2f398e.jpg",
+            "public/villa/697c55c2f3c84.jpg",
+            "public/villa/697c55c2f3f7f.jpg",
+            "public/villa/697c55c2f4236.jpg",
+            "public/villa/697c55c30024a.jpg",
+            "public/villa/697c55c3004b0.jpg",
+            "public/villa/697c55c300b72.jpg",
+            "public/villa/697c55c300df2.jpg",
+            "public/villa/697c55c30105d.jpg",
+            "public/villa/697c55c30129f.jpg",
+            "public/villa/697c55c3014fa.jpg",
+            "public/villa/697c55c301cf0.jpg",
+            "public/villa/697c55c301ef4.jpg",
+            "public/villa/697c55c3020e0.jpg",
+            "public/villa/697c55c3022d0.jpg",
+            "public/villa/697c55c30271c.jpg",
+            "public/villa/697c55c302967.jpg",
+            "public/villa/697c55c302b35.jpg",
+            "public/villa/697c55c302d4e.jpg"
+        ]
+    },
+    {
+        "id": "70",
+        "bhk": 7,
+        "title": "7 BHK IGRI HORA TURF VILLA",
+        "loc": "IGATPURI",
+        "priceWd": "19500",
+        "priceWe": "39500",
+        "img": "public/villa/697c54c757230.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/697c54c753425.jpg",
+            "public/villa/697c54c753978.jpg",
+            "public/villa/697c54c753bb8.jpg",
+            "public/villa/697c54c753dde.jpg",
+            "public/villa/697c54c753ff7.jpg",
+            "public/villa/697c54c75483a.jpg",
+            "public/villa/697c54c754abd.jpg",
+            "public/villa/697c54c754d19.jpg",
+            "public/villa/697c54c7551f3.jpg",
+            "public/villa/697c54c7553ea.jpg",
+            "public/villa/697c54c755625.jpg",
+            "public/villa/697c54c755877.jpg",
+            "public/villa/697c54c755a60.jpg",
+            "public/villa/697c54c755c96.jpg",
+            "public/villa/697c54c75634e.jpg",
+            "public/villa/697c54c75657d.jpg",
+            "public/villa/697c54c756873.jpg",
+            "public/villa/697c54c756afa.jpg",
+            "public/villa/697c54c757002.jpg",
+            "public/villa/697c54c757230.jpg"
+        ]
+    },
+    {
+        "id": "22",
+        "bhk": 7,
+        "title": "7 BHK LOHKRA VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "27000",
+        "priceWe": "42000",
+        "img": "public/villa/6979ff8579761.jpg",
+        "guests": "Max 30 Guests",
+        "gallery": [
+            "public/villa/6979ff85760e7.jpg",
+            "public/villa/6979ff85765c3.jpg",
+            "public/villa/6979ff85768a8.jpg",
+            "public/villa/6979ff8576a8b.jpg",
+            "public/villa/6979ff8576c83.jpg",
+            "public/villa/6979ff85772b3.jpg",
+            "public/villa/6979ff85774d2.jpg",
+            "public/villa/6979ff857769c.jpg",
+            "public/villa/6979ff857788f.jpg",
+            "public/villa/6979ff8577a8f.jpg",
+            "public/villa/6979ff857801d.jpg",
+            "public/villa/6979ff85781fe.jpg",
+            "public/villa/6979ff8578435.jpg",
+            "public/villa/6979ff857861b.jpg",
+            "public/villa/6979ff8578bb3.jpg",
+            "public/villa/6979ff8578e25.jpg",
+            "public/villa/6979ff8579037.jpg",
+            "public/villa/6979ff8579237.jpg",
+            "public/villa/6979ff857948f.jpg",
+            "public/villa/6979ff8579761.jpg"
+        ]
+    },
+    {
+        "id": "78",
+        "bhk": 8,
+        "title": "8 BHK MAHABIR VILLA",
+        "loc": "KARJAT",
+        "priceWd": "28000",
+        "priceWe": "48000",
+        "img": "public/villa/69c3f9d0b9386.jpg",
+        "guests": "Max 35 Guests",
+        "gallery": [
+            "public/villa/697c849087150.jpg",
+            "public/villa/697c84908758b.jpg",
+            "public/villa/697c8490878b5.jpg",
+            "public/villa/697c849087af9.jpg",
+            "public/villa/697c849087d6a.jpg",
+            "public/villa/697c849087f9d.jpg",
+            "public/villa/697c84908820f.jpg",
+            "public/villa/697c849088435.jpg",
+            "public/villa/697c849088a2a.jpg",
+            "public/villa/697c849088c8d.jpg",
+            "public/villa/697c849088f19.jpg",
+            "public/villa/697c84908915e.jpg",
+            "public/villa/697c8490893d5.jpg",
+            "public/villa/697c8490896c4.jpg",
+            "public/villa/697c849089916.jpg",
+            "public/villa/697c849089b76.jpg",
+            "public/villa/697c849089e07.jpg",
+            "public/villa/697c84908a5f0.jpg",
+            "public/villa/697c84908a827.jpg",
+            "public/villa/697c84908ae1b.jpg",
+            "public/villa/69c3f9d0b9386.jpg"
+        ]
+    },
+    {
+        "id": "77",
+        "bhk": 8,
+        "title": "8 BHK HILLJILL VILLA",
+        "loc": "IGATPURI",
+        "priceWd": "22000",
+        "priceWe": "42000",
+        "img": "public/villa/697c7db6c753e.jpg",
+        "guests": "Max 35 Guests",
+        "gallery": [
+            "public/villa/697c7db6c1f85.jpg",
+            "public/villa/697c7db6c2555.jpg",
+            "public/villa/697c7db6c28d7.jpg",
+            "public/villa/697c7db6c2c01.jpg",
+            "public/villa/697c7db6c2f1b.jpg",
+            "public/villa/697c7db6c31cc.jpg",
+            "public/villa/697c7db6c345f.jpg",
+            "public/villa/697c7db6c3711.jpg",
+            "public/villa/697c7db6c39ca.jpg",
+            "public/villa/697c7db6c3cf7.jpg",
+            "public/villa/697c7db6c482d.jpg",
+            "public/villa/697c7db6c4b52.jpg",
+            "public/villa/697c7db6c4e6c.jpg",
+            "public/villa/697c7db6c594b.jpg",
+            "public/villa/697c7db6c5d9f.jpg",
+            "public/villa/697c7db6c6048.jpg",
+            "public/villa/697c7db6c632a.jpg",
+            "public/villa/697c7db6c6bbe.jpg",
+            "public/villa/697c7db6c7187.jpg",
+            "public/villa/697c7db6c753e.jpg"
+        ]
+    },
+    {
+        "id": "76",
+        "bhk": 8,
+        "title": "8 BHK HIRRO VILLA",
+        "loc": "ALIBAUG",
+        "priceWd": "22000",
+        "priceWe": "42000",
+        "img": "public/villa/69c3f9f804616.jpg",
+        "guests": "Max 35 Guests",
+        "gallery": [
+            "public/villa/697c7cac43a32.jpg",
+            "public/villa/697c7cac43fdf.jpg",
+            "public/villa/697c7cac442d0.jpg",
+            "public/villa/697c7cac44582.jpg",
+            "public/villa/697c7cac44957.jpg",
+            "public/villa/697c7cac44c11.jpg",
+            "public/villa/697c7cac4568e.jpg",
+            "public/villa/697c7cac459b4.jpg",
+            "public/villa/697c7cac45c22.jpg",
+            "public/villa/697c7cac465a8.jpg",
+            "public/villa/697c7cac46876.jpg",
+            "public/villa/697c7cac46ab3.jpg",
+            "public/villa/697c7cac46d85.jpg",
+            "public/villa/697c7cac4702b.jpg",
+            "public/villa/697c7cac4759c.jpg",
+            "public/villa/697c7cac47f6f.jpg",
+            "public/villa/697c7cac48308.jpg",
+            "public/villa/697c7cac48788.jpg",
+            "public/villa/697c7cac489ac.jpg",
+            "public/villa/697c7cac48bc8.jpg",
+            "public/villa/69c3f9f804616.jpg"
+        ]
+    },
+    {
+        "id": "75",
+        "bhk": 8,
+        "title": "8 BHK APRIT VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "35000",
+        "priceWe": "58000",
+        "img": "public/villa/69c3fa14a55b2.jpg",
+        "guests": "Max 35 Guests",
+        "gallery": [
+            "public/villa/697c6e9ce2698.jpg",
+            "public/villa/697c6e9ce2b3f.jpg",
+            "public/villa/697c6e9ce2daa.jpg",
+            "public/villa/697c6e9ce301b.jpg",
+            "public/villa/697c6e9ce32cb.jpg",
+            "public/villa/697c6e9ce3708.jpg",
+            "public/villa/697c6e9ce3fa8.jpg",
+            "public/villa/697c6e9ce4263.jpg",
+            "public/villa/697c6e9ce4496.jpg",
+            "public/villa/697c6e9ce47be.jpg",
+            "public/villa/697c6e9ce49bb.jpg",
+            "public/villa/697c6e9ce4c85.jpg",
+            "public/villa/697c6e9ce5295.jpg",
+            "public/villa/697c6e9ce56f7.jpg",
+            "public/villa/697c6e9ce5964.jpg",
+            "public/villa/697c6e9ce5be3.jpg",
+            "public/villa/697c6e9ce5e79.jpg",
+            "public/villa/697c6e9ce6649.jpg",
+            "public/villa/697c6e9ce6a0f.jpg",
+            "public/villa/697c6e9ce6c96.jpg",
+            "public/villa/69c3fa14a55b2.jpg"
+        ]
+    },
+    {
+        "id": "23",
+        "bhk": 8,
+        "title": "8 BHK SANDHU FARMS",
+        "loc": "LONAVALA / PAWNA",
+        "priceWd": "35000",
+        "priceWe": "58000",
+        "img": "public/villa/697f3df10d88c.jpg",
+        "guests": "Max 35 Guests",
+        "gallery": [
+            "public/villa/697a00cc3e40e.jpg",
+            "public/villa/697a00cc3ecf7.jpg",
+            "public/villa/697a00cc3f04c.jpg",
+            "public/villa/697a00cc3f30d.jpg",
+            "public/villa/697a00cc3f571.jpg",
+            "public/villa/697a00cc3f7c0.jpg",
+            "public/villa/697a00cc40164.jpg",
+            "public/villa/697a00cc4064a.jpg",
+            "public/villa/697a00cc40897.jpg",
+            "public/villa/697a00cc40b10.jpg",
+            "public/villa/697a00cc40d8b.jpg",
+            "public/villa/697a00cc41333.jpg",
+            "public/villa/697a00cc41565.jpg",
+            "public/villa/697a00cc41772.jpg",
+            "public/villa/697a00cc41998.jpg",
+            "public/villa/697a00cc41eb8.jpg",
+            "public/villa/697a00cc42101.jpg",
+            "public/villa/697a00cc4230d.jpg",
+            "public/villa/697a00cc42558.jpg",
+            "public/villa/697a00cc42770.jpg",
+            "public/villa/697f3df10d88c.jpg"
+        ]
+    },
+    {
+        "id": "80",
+        "bhk": 10,
+        "title": "10 BHK CASA DE KRI",
+        "loc": "KARJAT",
+        "priceWd": "32000",
+        "priceWe": "60000",
+        "img": "public/villa/697c8783b280a.jpg",
+        "guests": "Max 40 Guests",
+        "gallery": [
+            "public/villa/697c8783af0f6.jpg",
+            "public/villa/697c8783af750.jpg",
+            "public/villa/697c8783afac3.jpg",
+            "public/villa/697c8783afe06.jpg",
+            "public/villa/697c8783b0095.jpg",
+            "public/villa/697c8783b0333.jpg",
+            "public/villa/697c8783b0c0c.jpg",
+            "public/villa/697c8783b1031.jpg",
+            "public/villa/697c8783b1307.jpg",
+            "public/villa/697c8783b1635.jpg",
+            "public/villa/697c8783b18f7.jpg",
+            "public/villa/697c8783b1b66.jpg",
+            "public/villa/697c8783b1e12.jpg",
+            "public/villa/697c8783b280a.jpg"
+        ]
+    },
+    {
+        "id": "79",
+        "bhk": 10,
+        "title": "10 BHK PARIS VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "32000",
+        "priceWe": "60000",
+        "img": "public/villa/697c85739690d.jpg",
+        "guests": "Max 40 Guests",
+        "gallery": [
+            "public/villa/697c8573922ef.jpg",
+            "public/villa/697c8573927c9.jpg",
+            "public/villa/697c857392a6e.jpg",
+            "public/villa/697c857392d48.jpg",
+            "public/villa/697c857392fd0.jpg",
+            "public/villa/697c857393278.jpg",
+            "public/villa/697c857393523.jpg",
+            "public/villa/697c857393dbb.jpg",
+            "public/villa/697c85739408e.jpg",
+            "public/villa/697c857394466.jpg",
+            "public/villa/697c857394719.jpg",
+            "public/villa/697c857394d4f.jpg",
+            "public/villa/697c857395025.jpg",
+            "public/villa/697c857395323.jpg",
+            "public/villa/697c8573955e0.jpg",
+            "public/villa/697c857395d57.jpg",
+            "public/villa/697c85739602a.jpg",
+            "public/villa/697c8573962f6.jpg",
+            "public/villa/697c857396618.jpg",
+            "public/villa/697c85739690d.jpg"
+        ]
+    },
+    {
+        "id": "82",
+        "bhk": 12,
+        "title": "12 BHK ANJIRAM VILLA",
+        "loc": "LONAVALA",
+        "priceWd": "44000",
+        "priceWe": "88000",
+        "img": "public/villa/69c3f99b56ef9.jpg",
+        "guests": "Max 50 Guests",
+        "gallery": [
+            "public/villa/697c8a1f8005e.jpg",
+            "public/villa/697c8a1f807c4.jpg",
+            "public/villa/697c8a1f80ab9.jpg",
+            "public/villa/697c8a1f80d92.jpg",
+            "public/villa/697c8a1f810a7.jpg",
+            "public/villa/697c8a1f81379.jpg",
+            "public/villa/697c8a1f81673.jpg",
+            "public/villa/697c8a1f819f2.jpg",
+            "public/villa/697c8a1f81ceb.jpg",
+            "public/villa/697c8a1f81ff7.jpg",
+            "public/villa/697c8a1f82988.jpg",
+            "public/villa/697c8a1f8314f.jpg",
+            "public/villa/697c8a1f8368a.jpg",
+            "public/villa/697c8a1f839d2.jpg",
+            "public/villa/697c8a1f83cab.jpg",
+            "public/villa/697c8a1f84351.jpg",
+            "public/villa/697c8a1f84673.jpg",
+            "public/villa/697c8a1f84929.jpg",
+            "public/villa/697c8a1f85267.jpg",
+            "public/villa/697c8a1f8551c.jpg",
+            "public/villa/69c3f99b56ef9.jpg"
+        ]
+    },
+    {
+        "id": "81",
+        "bhk": 12,
+        "title": "12 BHK SINGARA VILLA",
+        "loc": "KARJAT",
+        "priceWd": "44000",
+        "priceWe": "88000",
+        "img": "public/villa/69d518437cf8f.jpg",
+        "guests": "Max 50 Guests",
+        "gallery": [
+            "public/villa/697c899008fce.jpg",
+            "public/villa/697c8990094a2.jpg",
+            "public/villa/697c89900976c.jpg",
+            "public/villa/697c899009b0c.jpg",
+            "public/villa/697c899009e3f.jpg",
+            "public/villa/697c89900a0b6.jpg",
+            "public/villa/697c89900a361.jpg",
+            "public/villa/697c89900a63f.jpg",
+            "public/villa/697c89900a9e9.jpg",
+            "public/villa/697c89900ad1f.jpg",
+            "public/villa/697c89900afe0.jpg",
+            "public/villa/697c89900b93d.jpg",
+            "public/villa/697c89900bbcf.jpg",
+            "public/villa/697c89900beae.jpg",
+            "public/villa/697c89900c178.jpg",
+            "public/villa/697c89900c4e3.jpg",
+            "public/villa/697c89900c72f.jpg",
+            "public/villa/697c89900cd06.jpg",
+            "public/villa/697c89900cfe5.jpg",
+            "public/villa/697c89900d327.jpg",
+            "public/villa/69d518437cf8f.jpg"
+        ]
+    }
+];
+
+        // =================================================================
+        // DO NOT TOUCH ANYTHING BELOW THIS LINE
+        // =================================================================
+
+        let currentGallery = [];
+        let currentImageIndex = 0;
+
+        function formatPath(path) {
+            if (path && path.startsWith('public/')) return './' + path;
+            return path;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const villaId = urlParams.get('id');
+            const villa = villas.find(v => v.id === villaId);
+
+            if (villa) {
+                document.getElementById('villa-content').style.display = 'block';
+
+                if (villa.gallery && villa.gallery.length > 0) {
+                    currentGallery = villa.gallery.map(formatPath);
+                } else {
+                    currentGallery = [formatPath(villa.img)];
+                }
+
+                // Render Dynamic Gallery HTML
+                renderGalleryGrid(currentGallery);
+
+                // Inject Text
+                document.title = `${villa.title} | Novastay`;
+                document.getElementById('v-title').innerText = villa.title;
+                document.getElementById('v-loc-crumb').innerText = villa.loc;
+                document.getElementById('v-loc').innerText = villa.loc;
+                document.getElementById('v-guests').innerText = villa.guests;
+                document.getElementById('v-bhk').innerText = villa.bhk;
+                document.getElementById('w-priceWd').innerText = `₹${villa.priceWd}`;
+                document.getElementById('w-priceWd-2').innerText = `₹${villa.priceWd}`;
+                document.getElementById('w-priceWe').innerText = `₹${villa.priceWe}`;
+
+                const waMessage = encodeURIComponent(`Hello, I am interested in booking ${villa.title}.`);
+                document.getElementById('whatsapp-btn').href = `https://wa.me/918796130125?text=${waMessage}`;
+
+            } else {
+                document.getElementById('error-state').style.display = 'block';
+            }
+        });
+
+        // Smart Gallery Renderer (Adapts to 1, 2, 3, or 5+ images)
+        function renderGalleryGrid(images) {
+            const container = document.getElementById('dynamic-gallery');
+            const len = images.length;
+            let html = '';
+
+            if (len === 1) {
+                html = `<div class="col-span-full h-full overflow-hidden"><img src="${images[0]}" onclick="openLightbox(0)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>`;
+            } else if (len === 2) {
+                html = `
+                    <div class="col-span-2 h-full overflow-hidden"><img src="${images[0]}" onclick="openLightbox(0)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                    <div class="col-span-2 h-full overflow-hidden"><img src="${images[1]}" onclick="openLightbox(1)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                `;
+            } else if (len === 3) {
+                html = `
+                    <div class="col-span-1 md:col-span-2 h-full overflow-hidden"><img src="${images[0]}" onclick="openLightbox(0)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                    <div class="hidden md:flex flex-col gap-2 col-span-2 h-full">
+                        <div class="h-1/2 overflow-hidden"><img src="${images[1]}" onclick="openLightbox(1)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                        <div class="h-1/2 overflow-hidden"><img src="${images[2]}" onclick="openLightbox(2)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                    </div>
+                `;
+            } else if (len >= 4) {
+                html = `
+                    <div class="col-span-1 md:col-span-2 h-full overflow-hidden"><img src="${images[0]}" onclick="openLightbox(0)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                    <div class="hidden md:grid grid-cols-2 grid-rows-2 gap-2 col-span-2 h-full">
+                        <div class="overflow-hidden"><img src="${images[1]}" onclick="openLightbox(1)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                        <div class="overflow-hidden"><img src="${images[2]}" onclick="openLightbox(2)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                        <div class="overflow-hidden"><img src="${images[3] || images[0]}" onclick="openLightbox(3)" class="w-full h-full object-cover hover:scale-105 transition cursor-pointer"></div>
+                        <div class="overflow-hidden relative group cursor-pointer" onclick="openLightbox(4)">
+                            <img src="${images[4] || images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition">
+                            ${len > 5 ? `<div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center"><span class="text-white font-bold tracking-wide"><i class="fa-regular fa-images mr-2"></i>+${len - 5} photos</span></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const counter = document.getElementById('lightbox-counter');
+
+        function openLightbox(index) {
+            if (!currentGallery || currentGallery.length === 0) return;
+            if (index >= currentGallery.length) index = 0;
+            
+            currentImageIndex = index;
+            updateLightboxImage();
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        function changeSlide(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
+            else if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            lightboxImg.src = currentGallery[currentImageIndex];
+            counter.innerText = `${currentImageIndex + 1} / ${currentGallery.length}`;
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) closeLightbox();
+        });
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).catch(() => {});
+                alert("Link copied to clipboard!");
+            }
+        }
+		// ==========================================
+        // BOOKING & UPI LOGIC
+        // ==========================================
+        
+        // Put your actual UPI ID here (e.g., yournumber@paytm or yourname@okhdfcbank)
+        const myUpiId = "your-upi-id@bank"; 
+        const myBusinessName = "Novastay";
+
+        function bookViaWhatsApp() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const villa = villas.find(v => v.id === urlParams.get('id'));
+            
+            const checkin = document.getElementById('checkin-date').value;
+            const checkout = document.getElementById('checkout-date').value;
+            
+            let message = `Hello Novastay, I want to book *${villa.title}*.\n`;
+            if(checkin && checkout) {
+                message += `Dates: ${checkin} to ${checkout}\n`;
+            } else {
+                message += `(I haven't selected dates yet)\n`;
+            }
+            message += `Please confirm availability!`;
+
+            const waLink = `https://wa.me/918796130125?text=${encodeURIComponent(message)}`;
+            window.open(waLink, '_blank');
+        }
+
+        function payViaUPI() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const villa = villas.find(v => v.id === urlParams.get('id'));
+            
+            // This grabs the weekday price as a baseline to pay. 
+            // In the future, you can write code to calculate exact dates!
+            const amount = villa.priceWd; 
+
+            // This creates the special UPI link that phones understand
+            const upiLink = `upi://pay?pa=${myUpiId}&pn=${encodeURIComponent(myBusinessName)}&am=${amount}&cu=INR&tn=Booking+Advance+${encodeURIComponent(villa.title)}`;
+            
+            // Open the link (works on mobile phones with UPI apps installed)
+            window.location.href = upiLink;
+        }
+    </script>
+</body>
+</html>

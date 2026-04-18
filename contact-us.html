@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Novastay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc; display: flex; flex-direction: column; min-height: 100vh;}
+        .serif { font-family: 'Playfair Display', serif; }
+        main { flex: 1; }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <nav class="bg-white border-b border-gray-100 px-4 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-bold text-lg tracking-widest uppercase text-gray-800 hover:text-orange-600 transition">
+                Novastay
+            </a>
+            <div class="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-wider">
+                <a href="index.html" class="text-gray-400 hover:text-gray-900 transition">Home</a>
+                <a href="about-us.html" class="text-gray-400 hover:text-gray-900 transition">About Us</a>
+                <a href="contact-us.html" class="text-gray-900 hover:text-gray-900 transition">Contact</a>
+            </div>
+            <a href="https://wa.me/918796130125" class="bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-green-600 transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Contact Host
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 serif">Get in Touch</h1>
+            <p class="text-lg text-gray-600">Have a question about a property or want to make a booking? We are here to help!</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            
+            <div class="space-y-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-5">
+                    <div class="bg-green-100 text-green-600 p-4 rounded-full text-2xl"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-xl mb-1">WhatsApp Us</h3>
+                        <p class="text-gray-500 text-sm mb-3">Fastest way to reach us for bookings and inquiries.</p>
+                        <a href="https://wa.me/918796130125" class="text-green-600 font-bold hover:underline">+91 87961 30125</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-5">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full text-2xl"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-xl mb-1">Call Us</h3>
+                        <p class="text-gray-500 text-sm mb-3">Available everyday from 9 AM to 9 PM.</p>
+                        <a href="tel:+918796130125" class="text-blue-600 font-bold hover:underline">+91 87961 30125</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Send a Message</h3>
+                <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thanks for reaching out! We will contact you soon.');">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Message</label>
+                        <textarea required rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition" placeholder="Tell us what you're looking for..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gray-900 text-white font-bold py-3 rounded-xl hover:bg-gray-800 transition shadow-md">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
+        <p>&copy; 2026 Novastay. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&amp;display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
+<style>
   /* force same height + same line */
 .header-search-form {
     display: flex;
@@ -112,7 +112,7 @@
 }
 
 .price-row.weekend {
-    background: #fff5f5;
+    background: #e6f9ed; /* Light green background for FREE */
 }
 
 .action-btn {
@@ -278,9 +278,62 @@
       </div>
     </div>
   </div>
+
+  <style>
+    .share-now-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .left-share {
+        display: flex;
+        align-items: center;
+    }
+    
+    .right-share {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .whatsapp-btn {
+        background: #25D366;
+        border-radius: 50%;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .whatsapp-btn i {
+        color: #fff;
+        font-size: 26px;
+    }
+  </style>
   
   <div class="container">
-    <div class="row margin-bottom-50">
+    <div class="share-now-bar">
+        <div class="left-share">
+            <a href="https://wa.me/918796130125" target="_blank" class="share-icon-btn whatsapp-btn">
+                <i class="fa fa-whatsapp"></i>
+            </a>&nbsp;
+            <p style="color:green; margin:0;"><strong>+91-8796130125</strong></p>
+        </div>
+    
+        <div class="right-share">
+            <button type="button" id="copyBtn" onclick="sharePage()" style="background: #2c335d; color: #fff; border: none; padding: 6px 14px; font-size: 13px; font-weight: 600; border-radius: 20px; cursor: pointer;">
+                Share Now
+            </button>
+        </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row margin-bottom-50" style="margin-top: 15px;">
       <div class="col-md-12"> 
         <div class="property-slider default"> 
             <a href="../public/villa/69c3f90b7e4d3.jpg" data-background-image="https://www.villacatalogues.com/public/villa/69c3f90b7e4d3.jpg" class="item mfp-gallery"></a>
@@ -302,65 +355,47 @@
     <div class="row"> 
       
       <div class="col-lg-8 col-md-7">
-
+        
         <div id="titlebar-dtl-item" class="property-titlebar margin-bottom-0">
             <div class="property-title">
-                 <h2>6 BHK GLASS HOUSE</h2>
-                <h4>PAWNA / LONAVALA</h4>
+                 <h2>6 BHK GLASS HOUSE - PAWNA / LONAVALA</h2>
+                <h4>PAWNA</h4>
                 <div class="property-pricing-text">
-                    <div style="font-size: 22px; color: #111;">Special Offer: Rs. 1499 / person</div>
-                    <div style="font-size: 14px; color: #16a34a; font-weight: 700;">All Food & Extras Included (FREE)</div>
+                    <div style="font-size: 22px; color: #e33324; font-weight: bold;">Offer: ₹1499 / person</div>
+                    <div style="font-size: 16px; color: #15803d; font-weight: 600;">All Food & Extras FREE</div>
                 </div>
-            </div>
-        </div>
-        
-        <div style="display: flex; gap: 30px; margin-bottom: 30px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px; margin-top: 20px; flex-wrap: wrap;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="fa fa-users" style="color: #4466d1; font-size: 24px;"></i>
-                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Capacity</div><div style="font-weight: 600; color: #111;">Max 26 Guests</div></div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="fa fa-bed" style="color: #4466d1; font-size: 24px;"></i>
-                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Rooms</div><div style="font-weight: 600; color: #111;">6 Bedroom</div></div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="fa fa-bath" style="color: #4466d1; font-size: 24px;"></i>
-                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Baths</div><div style="font-weight: 600; color: #111;">Attached Baths</div></div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="fa fa-tint" style="color: #4466d1; font-size: 24px;"></i>
-                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Pool</div><div style="font-weight: 600; color: #111;">Swimming Pool</div></div>
             </div>
         </div>
 
         <div class="property-description"> 
           <div class="utf-desc-headline-item">
-            <h3><i class="icon-material-outline-description"></i> What this place offers</h3>
+            <h3><i class="icon-material-outline-description"></i> Villa Description</h3>
           </div>
-          <div class="villa-full-description" style="line-height: 1.8;">
-            <p>🏡 <strong>VILLA PACKAGE</strong></p>
-            <p>💰 <strong>Special Offer:</strong> ₹1499/- <strong>per person</strong></p>
-
-            <p><strong>Available Amenities:</strong><br>
-            📺 Television<br>
-            🎲 Indoor Games: Chess, Ludo, Cards, UNO, Carrom<br>
-            🎱 Pool table & Badminton<br>
-            🏊‍♂️ Swimming Pool<br>
-            ❄️ AC Rooms<br>
-            🚗 Car Parking<br>
-            🔊 Speakers & Free Wi-Fi<br>
-            ⚡ 24 Hrs Electricity<br>
-            👨‍🔧 24/7 Caretaker Available</p>
+          
+          <div class="villa-full-description">
+            <p>🏡 <strong>VILLA DESCRIPTION</strong> 🏡</p>
+            <p>💰 <strong>Special Offer Price:</strong> ₹1499/- <strong>per person</strong></p>
+            <p>👨‍👩‍👧‍👦 <strong>MAX PEOPLE:</strong> 26<br>➕ Extra guests: <strong>Included (FREE)</strong></p>
+            <p>⏰ <strong>Check-in:</strong> 11:00 AM<br>⏰ <strong>Check-out:</strong> 11:00 AM<br>🔁 Check-in / time extend possible (property available hone par)</p>
             
-            <p>🍽️ <strong>FOOD & EXTRAS</strong></p>
-            <p>🥗 Meals: <span style="color: #16a34a; font-weight: 800;">FREE</span> (Proper Jain Food Available)<br>
-            🔥 BBQ Setup: <span style="color: #16a34a; font-weight: 800;">FREE</span><br>
-            ➕ Extra Guest Charge: <span style="color: #16a34a; font-weight: 800;">FREE</span></p>
+            <p>✨ <strong>AVAILABLE AMENITIES</strong> ✨</p>
+            <p>📺 TV<br>🎲 <strong>Games:</strong> Chess, Ludo, Cards, UNO, Carrom<br>🏏 Cricket Kit<br>🏸 Badminton Table</p>
+            <p>🎱Pool table<br>🏊‍♂️ Swimming Pool<br>❄️ AC<br>🚗 Car Parking Available<br>🔊 Speakers<br>⚡ 24 Hrs Electricity<br>📶 Wi-Fi<br>👨‍🔧 Caretaker Available (24 hrs – villa ke bahar)<br>🧊 Fridge</p>
             
-            <p>📜 <strong>TERMS & CONDITIONS</strong></p>
-            <p>🔐 Security Deposit: ₹7,000/- (Refundable at check-out)<br>
-            🇮🇳 Only Indian Guests Allowed<br>
-            🆔 Valid ID Compulsory (Aadhar Card, License, etc.)</p>
+            <p>🍽️ <strong>FOOD &amp; EXTRAS</strong> 🍽️</p>
+            <p>🥗 Food: <strong>FREE</strong><br>✔️ Proper <strong>Jain Food Available</strong><br>💧 Drinking Water (Bisleri Jar)<br>🔥 <strong>BBQ Available:</strong> <strong>FREE</strong><br>🍳 Kitchen utensils &amp; BBQ grill <strong>FREE use</strong></p>
+            
+            <p>🚐 <strong>Travelling Pickup &amp; Drop Available</strong><br>(Bus 🚍 &amp; Car 🚗 – Extra Charges)</p>
+            <p>💸 <strong>Affordable Rates</strong></p>
+            <p>🔐 <strong>Security Deposit:</strong> ₹7,000/- (Refundable)</p>
+            
+            <p>🏠 <strong>PROPERTY DETAILS</strong> 🏠</p>
+            <p>🛏️ 6 Bedrooms<br>🚿 8 Bathrooms<br>🛋️ 1 Big Hall<br>🌿 Lawn &amp; Garden<br>🏊 Swimming Pool<br>🪑 Outside Sitting Area<br>🛌 King Size Beds<br>🍽️ Kitchen | Sofa | Dining Area</p>
+            
+            <p>📜 <strong>TERMS &amp; CONDITIONS</strong> 📜</p>
+            <p>🔐 Security Deposit <strong>check-out ke time refund</strong><br>🇮🇳 <strong>Only Indian Guests Allowed</strong><br>🆔 Valid ID Compulsory (Aadhar Card, License, etc.)</p>
+            <p>💳 <strong>Refund Policy</strong> <i>(sirf 100% paid amount par apply)</i><br>✅ Cancel <strong>25 days pehle</strong> – 100% Refund<br>⚠️ Cancel <strong>15 days pehle</strong> – 50% Refund<br>❌ <strong>15 days ke baad</strong> – No Refund</p>
+            <p>&nbsp;</p>
           </div>
 
           <div class="margin-top-40"></div>
@@ -418,17 +453,17 @@
 
               <div style="margin-bottom: 24px;">
                   <div class="price-row weekday">
-                      <span style="color: #555; font-weight: 600; font-size: 14px;">Stay Package</span>
-                      <span style="color: #111; font-weight: 800; font-size: 15px;">₹1499 / PP</span>
+                      <span style="color: #555; font-weight: 600; font-size: 14px;">Special Offer (Per Person)</span>
+                      <span style="color: #111; font-weight: 800; font-size: 15px;">₹1499</span>
                   </div>
-                  <div class="price-row weekend" style="background: #eefdf4;">
-                      <span style="color: #16a34a; font-weight: 600; font-size: 14px;">Food & Extras</span>
-                      <span style="color: #16a34a; font-weight: 800; font-size: 15px;">FREE</span>
+                  <div class="price-row weekend">
+                      <span style="color: #15803d; font-weight: 600; font-size: 14px;">Food & Extras</span>
+                      <span style="color: #15803d; font-weight: 800; font-size: 15px;">FREE</span>
                   </div>
               </div>
 
               <div style="display: flex; flex-direction: column;">
-                  <a href="https://wa.me/918796130125?text=Hi,%20I%20want%20to%20book%20the%206%20BHK%20Glass%20House%20at%201499%20Offer" target="_blank" class="action-btn btn-whatsapp">
+                  <a href="https://wa.me/918796130125?text=Hi,%20I%20want%20to%20book%20the%206%20BHK%20Glass%20House%20with%20the%20Rs%201499%20Offer" target="_blank" class="action-btn btn-whatsapp">
                       <i class="fa fa-whatsapp"></i> Check Availability
                   </a>
                   <button class="action-btn btn-purple">

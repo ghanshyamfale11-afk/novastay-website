@@ -1,69 +1,460 @@
-<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] p-6 w-full max-w-[360px] font-sans border border-gray-100">
-    
-    <div class="flex items-baseline gap-1 mb-6">
-        <h2 class="text-3xl font-extrabold text-gray-900" id="headerPrice">₹2500</h2>
-        <span class="text-sm text-gray-500 font-medium">/ weekday</span>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="flex gap-3 mb-4">
-        <div class="flex-1 border border-gray-200 rounded-lg p-2 focus-within:border-gray-400 transition">
-            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Check-in</label>
-            <input type="date" id="checkIn" class="w-full text-sm font-semibold outline-none text-gray-800 bg-transparent cursor-pointer">
-        </div>
-        <div class="flex-1 border border-gray-200 rounded-lg p-2 focus-within:border-gray-400 transition">
-            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Check-out</label>
-            <input type="date" id="checkOut" class="w-full text-sm font-semibold outline-none text-gray-800 bg-transparent cursor-pointer">
-        </div>
-    </div>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">
+<meta name="theme-color" content="#e33324">
+<meta name="description" content="Luxury Villas for Sale">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novastay.in | 6 BHK Glass House</title>
 
-    <div class="border border-gray-200 rounded-lg p-2 mb-6 flex justify-between items-center focus-within:border-gray-400 transition">
-        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Total Guests</label>
-        <div class="flex items-center gap-2">
-            <input type="number" id="pax" min="1" value="1" class="w-12 text-right text-sm font-bold outline-none text-gray-800 bg-transparent">
-            <span class="text-xs text-gray-500 font-medium">Pax</span>
-        </div>
-    </div>
+<link rel="shortcut icon" href="../public/website/assets/images/favicon.html">
 
-    <div class="space-y-2 mb-6" id="priceBreakdown">
-        
-        <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100">
-            <span class="text-sm font-medium text-gray-600" id="wdLabel">Weekday</span>
-            <span class="text-sm font-bold text-gray-900" id="wdTotal">₹2500</span>
-        </div>
-        
-        <div class="flex justify-between items-center bg-red-50 p-3 rounded-lg border border-red-100">
-            <span class="text-sm font-medium text-red-500" id="weLabel">Weekend</span>
-            <span class="text-sm font-bold text-red-500" id="weTotal">₹5500</span>
+<link rel="stylesheet" href="../public/website/assets/css/stylesheet.css">
+
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&amp;display=swap" rel="stylesheet">  
+<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+  /* force same height + same line */
+.header-search-form {
+    display: flex;
+    align-items: stretch;
+}
+
+/* INPUT FIX */
+.header-search-input {
+    height: 44px !important;
+    line-height: 44px !important;
+    width: 230px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-right: 0;
+    border-radius: 6px 0 0 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* BUTTON FIX */
+.header-search-btn {
+    height: 44px !important;
+    width: 48px;
+    padding: 0 !important;
+    border: 1px solid #2c335d;
+    background: #2c335d;
+    color: #fff;
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* ICON CENTER */
+.header-search-btn i {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Sidebar Booking Widget Styles */
+.booking-widget-card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 90px;
+    margin-top: 20px;
+}
+
+.date-picker-wrap {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.date-picker-wrap label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: 2px;
+    display: block;
+}
+
+.date-picker-wrap input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    background: transparent;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.price-row.weekday {
+    background: #f9f9f9;
+}
+
+.price-row.weekend {
+    background: #fff5f5;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: none;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+
+.btn-whatsapp { background: #4ade80; color: #fff; }
+.btn-whatsapp:hover { background: #22c55e; color: #fff; text-decoration: none; }
+.btn-purple { background: #6d28d9; color: #fff; }
+.btn-purple:hover { background: #5b21b6; color: #fff; }
+.btn-outline { background: #fff; color: #111; border: 1px solid #111; }
+.btn-outline:hover { background: #f9f9f9; }
+
+/* Desktop layout: all in one row */
+.header-search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.search-wrapper {
+    display: flex;
+    flex: 2;
+    gap: 5px;
+    min-width: 200px;
+}
+
+.header-search-input.search-box {
+    flex: 1;
+}
+
+.filters-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+}
+
+.filters-wrapper select {
+    flex: 1;
+    min-width: 100px;
+}
+
+@media (max-width: 768px) {
+    .header-search-form {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .search-wrapper { width: 100%; }
+    .search-box { width: 100%; }
+    .filters-wrapper {
+        flex-direction: row;
+        gap: 5px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .filters-wrapper select { flex: 1 1 auto; }
+}
+</style>
+  
+</head>
+
+<body>
+
+<header id="header-container" class="fullwidth"> 
+    <div id="header">
+      <div class="container"> 
+        <div class="left-side"> 
+         <div id="logo">
+            <a href="../index.html"
+               style="
+                   font-weight:800;
+                   color:#111;
+                   font-size:20px;
+                   text-decoration:none;
+                   white-space:nowrap;
+                   display:inline-block;
+                   letter-spacing: 1px;
+                   text-transform: uppercase;
+               ">
+                NOVASTAY.IN
+            </a>
         </div>
 
-        <div class="flex justify-between items-center bg-blue-50 p-3 rounded-lg border border-blue-100 hidden" id="extraGuestRow">
-            <span class="text-sm font-medium text-blue-600" id="extraGuestLabel">Extra Guests (0)</span>
-            <span class="text-sm font-bold text-blue-600" id="extraGuestTotal">₹0</span>
+
+          <div class="mmenu-trigger">
+            <button class="hamburger hamburger--collapse" type="button"> <span class="hamburger-box"> <span class="hamburger-inner"></span> </span> </button>
+          </div>
+          <nav id="navigation" class="style-1">
+            <ul id="responsive">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../about-us.html">About Us</a></li>
+              <li><a href="../contact-us.html">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="clearfix"></div>
+        </div>
+        <div class="right-side">
+    <div class="header-widget">
+    <form method="GET" action="#" class="header-search-form" id="headerSearchForm">
+
+        <div class="search-wrapper">
+            <input type="text" name="search" class="header-search-input search-box" placeholder="Search By Name,Location...">
+            <button type="submit" class="header-search-btn">
+                <i class="fa fa-search"></i>
+            </button>
         </div>
 
-        <div id="totalsSection" class="hidden">
-            <div class="flex justify-between items-center pt-4 pb-2 border-t border-gray-100 mt-2">
-                <span class="text-base font-bold text-gray-800">Grand Total</span>
-                <span class="text-lg font-extrabold text-gray-900" id="grandTotal">₹0</span>
-            </div>
-            <div class="flex justify-between items-center pb-2">
-                <span class="text-xs font-bold text-purple-600 uppercase tracking-wide">60% Advance Payable</span>
-                <span class="text-sm font-extrabold text-purple-700" id="advanceTotal">₹0</span>
-            </div>
+        <div class="filters-wrapper">
+            <select name="bhk" class="header-search-input" id="bhkFilter">
+                <option value="">All BHK</option>
+                <option value="1">1 BHK</option>
+                <option value="2">2 BHK</option>
+                <option value="3">3 BHK</option>
+                <option value="4">4 BHK</option>
+                <option value="5">5 BHK</option>
+                <option value="6">6 BHK</option>
+            </select>
+            <select name="location" class="header-search-input" id="locationFilter">
+                <option value="">All Locations</option>
+                <option value="Karjat">Karjat</option>
+                <option value="Lonavala">Lonavala</option>
+                <option value="PAWNA">PAWNA</option>
+            </select>
         </div>
-    </div>
-
-    <div class="space-y-3">
-        <button class="w-full bg-[#4ADE80] hover:bg-[#22c55e] text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition shadow-sm">
-            <i class="fa-brands fa-whatsapp text-lg"></i> Check Availability
-        </button>
-        <button class="w-full bg-[#6D28D9] hover:bg-[#5b21b6] text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition shadow-sm">
-            <i class="fa-solid fa-qrcode"></i> Pay 60% Booking Advance
-        </button>
-        <button class="w-full border-2 border-gray-800 text-gray-800 hover:bg-gray-50 font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition">
-            <i class="fa-solid fa-share-nodes"></i> Share Villa
-        </button>
-    </div>
-    
-    <p class="text-[9px] text-center text-gray-400 font-bold uppercase tracking-wider mt-5">100% Booking amount required</p>
+    </form>
 </div>
+
+</div>
+      </div>
+    </div>
+  </header>
+  
+   <div class="parallax titlebar" data-background="https://www.villacatalogues.com/public/website/assets/images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
+    <div id="titlebar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>6 BHK GLASS HOUSE</h2>
+            <nav id="breadcrumbs">
+              <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>PAWNA / LONAVALA</li>
+                <li>6 BHK GLASS HOUSE</li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row margin-bottom-50">
+      <div class="col-md-12"> 
+        <div class="property-slider default"> 
+            <a href="../public/villa/69c3f90b7e4d3.jpg" data-background-image="https://www.villacatalogues.com/public/villa/69c3f90b7e4d3.jpg" class="item mfp-gallery"></a>
+            <a href="../public/villa/698ef60bc9d5e.jpg" data-background-image="https://www.villacatalogues.com/public/villa/698ef60bc9d5e.jpg" class="item mfp-gallery"></a>
+            <a href="../public/villa/698ef60bcad73.jpg" data-background-image="https://www.villacatalogues.com/public/villa/698ef60bcad73.jpg" class="item mfp-gallery"></a>
+        </div>
+
+        <div class="property-slider-nav">
+            <div class="item"><img src="../public/villa/69c3f90b7e4d3.jpg" alt="6 BHK GLASS HOUSE"></div>
+            <div class="item"><img src="../public/villa/698ef60bc9d5e.jpg" alt="6 BHK GLASS HOUSE"></div>
+            <div class="item"><img src="../public/villa/698ef60bcad73.jpg" alt="6 BHK GLASS HOUSE"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row"> 
+      
+      <div class="col-lg-8 col-md-7">
+        
+        <div style="display: flex; gap: 30px; margin-bottom: 30px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa fa-users" style="color: #4466d1; font-size: 24px;"></i>
+                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Capacity</div><div style="font-weight: 600; color: #111;">Max 26 Guests</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa fa-bed" style="color: #4466d1; font-size: 24px;"></i>
+                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Rooms</div><div style="font-weight: 600; color: #111;">6 Bedroom</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa fa-bath" style="color: #4466d1; font-size: 24px;"></i>
+                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Baths</div><div style="font-weight: 600; color: #111;">Attached Baths</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa fa-tint" style="color: #4466d1; font-size: 24px;"></i>
+                <div><div style="font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;">Pool</div><div style="font-weight: 600; color: #111;">Swimming Pool</div></div>
+            </div>
+        </div>
+
+        <div class="property-description"> 
+          <div class="utf-desc-headline-item">
+            <h3><i class="icon-material-outline-description"></i> What this place offers</h3>
+          </div>
+          <div class="villa-full-description" style="line-height: 1.8;">
+            <p>🏡 <strong>VILLA DESCRIPTION</strong></p>
+            <p><strong>Available Amenities:</strong><br>
+            📺 Television<br>
+            🎲 Indoor Games: Chess, Ludo, Cards, UNO, Carrom<br>
+            🎱 Pool table & Badminton<br>
+            🏊‍♂️ Swimming Pool<br>
+            ❄️ AC Rooms<br>
+            🚗 Car Parking<br>
+            🔊 Speakers & Free Wi-Fi<br>
+            ⚡ 24 Hrs Electricity<br>
+            👨‍🔧 24/7 Caretaker Available</p>
+            
+            <p>🍽️ <strong>FOOD & EXTRAS</strong></p>
+            <p>🥗 Meals: ₹750 / person (Proper Jain Food Available)<br>
+            🔥 BBQ Setup: ₹150 / person<br>
+            ➕ Extra Guest Charge: ₹500 / person</p>
+            
+            <p>📜 <strong>TERMS & CONDITIONS</strong></p>
+            <p>🔐 Security Deposit: ₹7,000/- (Refundable at check-out)<br>
+            🇮🇳 Only Indian Guests Allowed<br>
+            🆔 Valid ID Compulsory (Aadhar Card, License, etc.)</p>
+          </div>
+
+          <div class="margin-top-40"></div>
+
+          <div class="utf-desc-headline-item margin-top-40">
+              <h3><i class="icon-material-outline-rate-review"></i> Guest Reviews (3)</h3>
+          </div>
+
+          <div class="row">
+              <div class="col-md-4 col-sm-6 margin-bottom-30">
+                  <div class="review-card" style="border: 1px solid #e1e1e1; border-radius: 8px; padding: 15px; background: #fff;">
+                      <div class="review-rating" style="color: #f4b400; font-size: 16px; margin-bottom: 8px;">
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
+                      </div>
+                      <h4 class="review-name" style="font-weight: 600; margin-bottom: 6px;">Anjuman Khatun</h4>
+                      <p class="review-message" style="font-size: 14px; color: #666;">Good</p>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 margin-bottom-30">
+                  <div class="review-card" style="border: 1px solid #e1e1e1; border-radius: 8px; padding: 15px; background: #fff;">
+                      <div class="review-rating" style="color: #f4b400; font-size: 16px; margin-bottom: 8px;">
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      </div>
+                      <h4 class="review-name" style="font-weight: 600; margin-bottom: 6px;">Rhit</h4>
+                      <p class="review-message" style="font-size: 14px; color: #666;">Good villa very nice service</p>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 margin-bottom-30">
+                  <div class="review-card" style="border: 1px solid #e1e1e1; border-radius: 8px; padding: 15px; background: #fff;">
+                      <div class="review-rating" style="color: #f4b400; font-size: 16px; margin-bottom: 8px;">
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      </div>
+                      <h4 class="review-name" style="font-weight: 600; margin-bottom: 6px;">Ketan Mehta</h4>
+                      <p class="review-message" style="font-size: 14px; color: #666;">Veg jain meal 22 may to 24 may</p>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-5">
+          <div class="booking-widget-card">
+              <div style="font-size: 28px; font-weight: 800; color: #111; margin-bottom: 20px;">₹22000 <span style="font-size: 14px; color: #888; font-weight: 500;">/ weekday</span></div>
+              
+              <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                  <div class="date-picker-wrap">
+                      <label>Check-in</label>
+                      <input type="date">
+                  </div>
+                  <div class="date-picker-wrap">
+                      <label>Check-out</label>
+                      <input type="date">
+                  </div>
+              </div>
+
+              <div style="margin-bottom: 24px;">
+                  <div class="price-row weekday">
+                      <span style="color: #555; font-weight: 600; font-size: 14px;">Weekday</span>
+                      <span style="color: #111; font-weight: 800; font-size: 15px;">₹22000</span>
+                  </div>
+                  <div class="price-row weekend">
+                      <span style="color: #d14141; font-weight: 600; font-size: 14px;">Weekend</span>
+                      <span style="color: #d14141; font-weight: 800; font-size: 15px;">₹39000</span>
+                  </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column;">
+                  <a href="https://wa.me/918796130125?text=Hi,%20I%20want%20to%20book%20the%206%20BHK%20Glass%20House" target="_blank" class="action-btn btn-whatsapp">
+                      <i class="fa fa-whatsapp"></i> Check Availability
+                  </a>
+                  <button class="action-btn btn-purple">
+                      <i class="fa fa-qrcode"></i> Pay 60% Booking Advance
+                  </button>
+                  <button onclick="sharePage()" class="action-btn btn-outline">
+                      <i class="fa fa-share-alt"></i> Share Villa
+                  </button>
+              </div>
+              
+              <div style="text-align: center; margin-top: 15px; font-size: 11px; color: #999; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                  100% BOOKING AMOUNT REQUIRED
+              </div>
+          </div>
+      </div>
+      
+  </div> 
+  </div>
+
+<script src="../public/website/assets/scripts/jquery-3.3.1.min.js"></script> 
+<script src="../public/website/assets/scripts/bootstrap.min.js"></script>
+<script src="../public/website/assets/scripts/magnific-popup.min.js"></script> 
+<script src="../public/website/assets/scripts/owl.carousel.min.js"></script> 
+
+<script>
+function sharePage() {
+    const shareData = {
+        title: document.title,
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(window.location.href).catch(() => {});
+        alert("Link copied to clipboard!");
+    }
+}
+</script>
+
+</body>
+</html>

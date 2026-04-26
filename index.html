@@ -1,472 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novastay.in | Luxury Stays</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] p-6 w-full max-w-[360px] font-sans border border-gray-100">
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc;}
-        .serif { font-family: 'Playfair Display', serif; }
-        
-        /* Hide scrollbar for carousels but keep functionality */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .scroll-container {
-            scroll-behavior: smooth;
-        }
+    <div class="flex items-baseline gap-1 mb-6">
+        <h2 class="text-3xl font-extrabold text-gray-900" id="headerPrice">₹2500</h2>
+        <span class="text-sm text-gray-500 font-medium">/ weekday</span>
+    </div>
 
-        .villa-card {
-            min-width: 300px;
-            max-width: 300px;
-        }
-        
-        @media (min-width: 768px) {
-            .villa-card {
-                min-width: 350px;
-                max-width: 350px;
-            }
-        }
-    </style>
-</head>
-<body class="text-gray-900">
-
-    <nav class="sticky top-0 z-50 bg-white border-b border-gray-100 px-4 py-3 shadow-sm">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center justify-between w-full md:w-auto">
-                <a href="index.html" class="font-bold text-lg tracking-widest uppercase text-gray-800 hover:text-orange-600 transition">
-                    Novastay.in
-                </a>
-                <button class="md:hidden text-gray-600"><i class="fa-solid fa-bars text-xl"></i></button>
-            </div>
-
-            <div class="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-wider">
-                <a href="index.html" class="text-orange-600 border-b-2 border-orange-600 pb-1">Home</a>
-                <a href="about-us.html" class="text-gray-400 hover:text-gray-900 transition">About Us</a>
-                <a href="contact-us.html" class="text-gray-400 hover:text-gray-900 transition">Contact</a>
-            </div>
-
-            <div class="flex items-center gap-2 w-full md:w-auto">
-                <div class="relative flex-1 md:w-48">
-                    <input type="text" id="searchInput" placeholder="Search By Name" class="w-full pl-3 pr-8 py-2 bg-gray-50 border border-gray-200 rounded text-sm focus:outline-none focus:border-blue-500 transition-colors">
-                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-gray-400 text-xs"></i>
-                </div>
-                <select id="bhkFilter" class="px-2 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-600 font-medium focus:outline-none cursor-pointer">
-                    <option value="All">All BHK</option>
-                    <option value="1">1 BHK</option>
-                    <option value="2">2 BHK</option>
-                    <option value="3">3 BHK</option>
-                    <option value="4">4 BHK</option>
-                    <option value="5">5 BHK</option>
-                    <option value="6">6 BHK</option>
-                    <option value="7">7 BHK</option>
-                    <option value="8">8 BHK</option>
-                    <option value="10">10 BHK</option>
-                    <option value="12">12 BHK</option>
-                </select>
-                <select id="locationFilter" class="px-2 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-600 font-medium focus:outline-none cursor-pointer">
-                    <option value="All">All Locations</option>
-                    <option value="Karjat">Karjat</option>
-                    <option value="Lonavala">Lonavala</option>
-                    <option value="Pawna">Pawna</option>
-                    <option value="Alibaug">Alibaug</option>
-                    <option value="Khandala">Khandala</option>
-                    <option value="Igatpuri">Igatpuri</option>
-                    <option value="Panchgani">Panchgani</option>
-                    <option value="Mahableshwar">Mahableshwar</option>
-                </select>
-            </div>
+    <div class="flex gap-3 mb-4">
+        <div class="flex-1 border border-gray-200 rounded-lg p-2 focus-within:border-gray-400 transition">
+            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Check-in</label>
+            <input type="date" id="checkIn" class="w-full text-sm font-semibold outline-none text-gray-800 bg-transparent cursor-pointer">
         </div>
-    </nav>
+        <div class="flex-1 border border-gray-200 rounded-lg p-2 focus-within:border-gray-400 transition">
+            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Check-out</label>
+            <input type="date" id="checkOut" class="w-full text-sm font-semibold outline-none text-gray-800 bg-transparent cursor-pointer">
+        </div>
+    </div>
 
-    <main class="max-w-7xl mx-auto px-4 py-12 space-y-12" id="main-content">
+    <div class="border border-gray-200 rounded-lg p-2 mb-6 flex justify-between items-center focus-within:border-gray-400 transition">
+        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Total Guests</label>
+        <div class="flex items-center gap-2">
+            <input type="number" id="pax" min="1" value="1" class="w-12 text-right text-sm font-bold outline-none text-gray-800 bg-transparent">
+            <span class="text-xs text-gray-500 font-medium">Pax</span>
+        </div>
+    </div>
+
+    <div class="space-y-2 mb-6" id="priceBreakdown">
         
-        <div class="text-center">
-            <h1 class="serif text-2xl md:text-3xl italic text-gray-700">Please select a villa and share it with your host.</h1>
+        <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100">
+            <span class="text-sm font-medium text-gray-600" id="wdLabel">Weekday</span>
+            <span class="text-sm font-bold text-gray-900" id="wdTotal">₹2500</span>
+        </div>
+        
+        <div class="flex justify-between items-center bg-red-50 p-3 rounded-lg border border-red-100">
+            <span class="text-sm font-medium text-red-500" id="weLabel">Weekend</span>
+            <span class="text-sm font-bold text-red-500" id="weTotal">₹5500</span>
         </div>
 
-        <section class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-gray-900 group">
-            <div class="absolute inset-0">
-                <img src="public/villa/69c3f90b7e4d3.jpg" onerror="this.src='https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="Glass House Offer" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-transparent"></div>
+        <div class="flex justify-between items-center bg-blue-50 p-3 rounded-lg border border-blue-100 hidden" id="extraGuestRow">
+            <span class="text-sm font-medium text-blue-600" id="extraGuestLabel">Extra Guests (0)</span>
+            <span class="text-sm font-bold text-blue-600" id="extraGuestTotal">₹0</span>
+        </div>
+
+        <div id="totalsSection" class="hidden">
+            <div class="flex justify-between items-center pt-4 pb-2 border-t border-gray-100 mt-2">
+                <span class="text-base font-bold text-gray-800">Grand Total</span>
+                <span class="text-lg font-extrabold text-gray-900" id="grandTotal">₹0</span>
             </div>
-
-            <div class="relative p-8 md:p-12 lg:p-16 max-w-3xl flex flex-col justify-center h-full text-white">
-                <h3 class="text-yellow-400 font-bold tracking-wider text-sm md:text-base uppercase mb-2">Special Offer: Experience The Glass House</h3>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">JUST ₹1499/- <span class="text-2xl md:text-3xl font-semibold">PP</span></h1>
-                <h2 class="text-xl md:text-2xl font-bold mb-4">ALL FOOD & EXTRAS INCLUDED <span class="text-yellow-400">(FREE)</span></h2>
-                <p class="text-gray-200 text-sm md:text-base mb-8 max-w-xl leading-relaxed">
-                    <strong class="text-yellow-400">Includes:</strong> All Meals (Proper Jain Food available), BBQ Setup, and Extra Guest Charges! Plus, free Wi-Fi, television, swimming pool access, and more.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                    <a href="villa.html?id=87" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded transition duration-300 uppercase tracking-wider text-sm shadow-md">
-                        Book This Offer
-                    </a>
-                </div>
+            <div class="flex justify-between items-center pb-2">
+                <span class="text-xs font-bold text-purple-600 uppercase tracking-wide">60% Advance Payable</span>
+                <span class="text-sm font-extrabold text-purple-700" id="advanceTotal">₹0</span>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <section class="max-w-2xl mx-auto w-full">
-            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
-                <div class="text-center mb-6">
-                    <h3 class="serif text-2xl font-bold text-gray-800">Quick Cost Estimator</h3>
-                    <p class="text-gray-500 text-sm mt-1">Estimate your stay based on standard rates before selecting a villa.</p>
-                </div>
-                
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Check-in Date</label>
-                            <input type="date" id="checkIn" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition-colors">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Check-out Date</label>
-                            <input type="date" id="checkOut" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition-colors">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Guests (Pax)</label>
-                        <input type="number" id="pax" min="1" value="1" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition-colors">
-                    </div>
-
-                    <div id="priceBreakdown" class="hidden flex-col gap-3 mt-6 pt-6 border-t border-gray-100 text-sm">
-                        <div class="flex justify-between text-gray-600 font-medium">
-                            <span id="wdSummary">0 Weekday Nights</span>
-                            <span id="wdTotal">₹0</span>
-                        </div>
-                        <div class="flex justify-between text-gray-600 font-medium">
-                            <span id="weSummary">0 Weekend Nights</span>
-                            <span id="weTotal">₹0</span>
-                        </div>
-                        <div class="flex justify-between text-gray-600 font-medium">
-                            <span id="paxSummary">Extra Guests (0)</span>
-                            <span id="paxTotal">₹0</span>
-                        </div>
-                        <div class="flex justify-between font-extrabold text-xl text-gray-800 pt-4 border-t mt-2">
-                            <span>Grand Total Estimate</span>
-                            <span id="grandTotal" class="text-orange-600">₹0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div id="dynamic-sections" class="space-y-16"></div>
-
-    </main>
-
-    <a href="https://wa.me/" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 z-50">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
-
-    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm mt-12">
-        <p>&copy; 2026 Novastay.in. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // ==========================================
-        // 1. VILLA DATA & FILTERING LOGIC
-        // ==========================================
-        const villas = [
-            // 1 BHK
-            { bhk: 1, title: "1 BEDROOM KESARI VILLA", loc: "KARJAT", priceWd: "2500", priceWe: "5500", img: "public/villa/697deba4b2c24.jpg", url: "villa-detail/25.html" },
-            { bhk: 1, title: "1 BEDROOM HIWARE VILLA", loc: "KARJAT", priceWd: "2500", priceWe: "5500", img: "public/villa/697c496de583c.jpg", url: "villa-detail/24.html" },
-            { bhk: 1, title: "1 BEDROOM SOMNA CASA", loc: "KARJAT", priceWd: "3000", priceWe: "6000", img: "public/villa/697de6820ce6d.jpg", url: "villa-detail/16.html" },
-            
-            // 2 BHK
-            { bhk: 2, title: "2 BHK SHREE FARMS", loc: "KARJAT", priceWd: "5500", priceWe: "9500", img: "public/villa/697dec1f0c65d.jpg", url: "villa-detail/35.html" },
-            { bhk: 2, title: "2 BHK SMOOKEY VILLA", loc: "IGATPURI", priceWd: "5000", priceWe: "8000", img: "public/villa/697a3b2fcbbb5.jpg", url: "villa-detail/34.html" },
-            { bhk: 2, title: "2 BHK ANVI VILLA", loc: "ALIBAUG", priceWd: "5000", priceWe: "9000", img: "public/villa/697a399c07787.jpg", url: "villa-detail/33.html" },
-            { bhk: 2, title: "2 BHK ZINGO VALLEY", loc: "IGATPURI", priceWd: "5000", priceWe: "9000", img: "public/villa/697a38d173697.jpg", url: "villa-detail/32.html" },
-            { bhk: 2, title: "2 BHK DUNED DELIGHT", loc: "KARJAT", priceWd: "5500", priceWe: "9000", img: "public/villa/697a373e58b23.jpg", url: "villa-detail/31.html" },
-            { bhk: 2, title: "2 BHK SAPPHIRE SEASCAPE", loc: "KHANDALA", priceWd: "5500", priceWe: "9000", img: "public/villa/697a3530a1467.jpg", url: "villa-detail/30.html" },
-            { bhk: 2, title: "2 BHK TOPICALTIDE", loc: "LONAVALA", priceWd: "5500", priceWe: "9000", img: "public/villa/697a327acb00a.jpg", url: "villa-detail/28.html" },
-            { bhk: 2, title: "2 BHK RANGILA VILLA", loc: "ALIBAUG", priceWd: "5000", priceWe: "9000", img: "public/villa/697a1c1c93270.jpg", url: "villa-detail/27.html" },
-            { bhk: 2, title: "2 BHK AVION HOLIDAY", loc: "KARJAT", priceWd: "5000", priceWe: "9000", img: "public/villa/697a0a5e6bb6c.jpg", url: "villa-detail/26.html" },
-            { bhk: 2, title: "2 BHK ROYAL CRYSTAL", loc: "LONAVALA", priceWd: "5500", priceWe: "9500", img: "public/villa/6979c02550ae8.jpg", url: "villa-detail/17.html" },
-
-            // 3 BHK
-            { bhk: 3, title: "3 BHK THAKWAD NIWAS", loc: "KARJAT", priceWd: "9000", priceWe: "15000", img: "public/villa/697f49a5ef5eb.jpg", url: "villa-detail/84.html" },
-            { bhk: 3, title: "3 BHK THE LAST RESORT", loc: "MAHABLESHWAR", priceWd: "8000", priceWe: "12000", img: "public/villa/697af073bd369.jpg", url: "villa-detail/45.html" },
-            { bhk: 3, title: "3 BHK SUNFLOWER", loc: "LONAVALA", priceWd: "9000", priceWe: "16000", img: "public/villa/697ae8f5593c5.jpg", url: "villa-detail/44.html" },
-            { bhk: 3, title: "3 BHK VIRAJ DHULE", loc: "LONAVALA", priceWd: "9000", priceWe: "16000", img: "public/villa/697fc6bb1dcb7.jpg", url: "villa-detail/43.html" },
-            { bhk: 3, title: "3 BHK THE LAKE HOUSE", loc: "LONAVALA", priceWd: "7000", priceWe: "10000", img: "public/villa/697ae6e82cc9d.jpg", url: "villa-detail/42.html" },
-            { bhk: 3, title: "3 BHK VILLA OASIS", loc: "KARJAT", priceWd: "8500", priceWe: "15000", img: "public/villa/697a520e2f933.jpg", url: "villa-detail/41.html" },
-            { bhk: 3, title: "3 BHK MERITASADORE", loc: "PANCHGANI", priceWd: "9000", priceWe: "14000", img: "public/villa/697a5066c4081.jpg", url: "villa-detail/40.html" },
-            { bhk: 3, title: "3 BHK CLIFF SIDEAWAY", loc: "PANCHGANI", priceWd: "9000", priceWe: "14000", img: "public/villa/697a41b380265.jpg", url: "villa-detail/39.html" },
-            { bhk: 3, title: "3 BHK PRINCESS VILLA", loc: "LONAVALA / PAWNA", priceWd: "12000", priceWe: "18000", img: "public/villa/697f1770d98ac.jpg", url: "villa-detail/18.html" },
-
-            // 4 BHK
-            { bhk: 4, title: "4 BHK VIRA FARM", loc: "KARJAT", priceWd: "12000", priceWe: "24000", img: "public/villa/697f1311863a4.jpg", url: "villa-detail/54.html" },
-            { bhk: 4, title: "4 BHK ALING MASK", loc: "ALIBAUG", priceWd: "10000", priceWe: "18000", img: "public/villa/697aff08d532e.jpg", url: "villa-detail/53.html" },
-            { bhk: 4, title: "4 BHK DECK", loc: "PANCHGANI", priceWd: "16500", priceWe: "21000", img: "public/villa/697afe21e0fd0.jpg", url: "villa-detail/52.html" },
-            { bhk: 4, title: "4 BHK BORN COTTAGE", loc: "LONAVALA", priceWd: "16000", priceWe: "21000", img: "public/villa/697afc6b2ef8e.jpg", url: "villa-detail/51.html" },
-            { bhk: 4, title: "4 BHK NOVOTEL IMAGICA", loc: "PANCHGANI", priceWd: "12000", priceWe: "18000", img: "public/villa/697af8362bf38.jpg", url: "villa-detail/50.html" },
-            { bhk: 4, title: "4 BHK IGNO CASA", loc: "IGATPURI", priceWd: "9500", priceWe: "16000", img: "public/villa/697af64a65de4.jpg", url: "villa-detail/49.html" },
-            { bhk: 4, title: "4 BHK CORN VILLA", loc: "ALIBAUG", priceWd: "10000", priceWe: "18000", img: "public/villa/697af5afbb342.jpg", url: "villa-detail/48.html" },
-            { bhk: 4, title: "4 BHK PUSHKAR NALAWADE", loc: "LONAVALA", priceWd: "10000", priceWe: "18000", img: "public/villa/697f3d0b5d7f4.jpg", url: "villa-detail/47.html" },
-            { bhk: 4, title: "4 BHK CRAZY BELL", loc: "KARJAT", priceWd: "10000", priceWe: "18000", img: "public/villa/697af16d591ac.jpg", url: "villa-detail/46.html" },
-            { bhk: 4, title: "4 BHK EARTH FARM", loc: "LONAVALA / PAWNA", priceWd: "15000", priceWe: "22000", img: "public/villa/697f090e0f11d.jpg", url: "villa-detail/19.html" },
-
-            // 5 BHK
-            { bhk: 5, title: "5 BHK DREAMWOOD VILLA", loc: "PAWNA / LONAVALA", priceWd: "18000", priceWe: "28000", img: "public/villa/69c3f8de08ca0.jpg", url: "villa-detail/89.html" },
-            { bhk: 5, title: "5 BHK VILAS SAKHARAM WAGHMARE", loc: "LONAVALA", priceWd: "25000", priceWe: "36000", img: "public/villa/69c3f94f8ce61.jpg", url: "villa-detail/85.html" },
-            { bhk: 5, title: "5 BHK BREEZA BAND", loc: "KARJAT", priceWd: "17000", priceWe: "24000", img: "public/villa/697b3c3b68ef6.jpg", url: "villa-detail/64.html" },
-            { bhk: 5, title: "5 BHK EKAYA FARMS", loc: "LONAVALA / PAWNA", priceWd: "16000", priceWe: "23000", img: "public/villa/697f450899339.jpg", url: "villa-detail/63.html" },
-            { bhk: 5, title: "5 BHK SEWAKET VILLA", loc: "ALIBAUG", priceWd: "14000", priceWe: "22000", img: "public/villa/697b397f37dc0.jpg", url: "villa-detail/62.html" },
-            { bhk: 5, title: "5 BHK SOMNA VILLA", loc: "ALIBAUG", priceWd: "14000", priceWe: "22000", img: "public/villa/697b38d773a32.jpg", url: "villa-detail/61.html" },
-            { bhk: 5, title: "5 BHK DOLCEVITA", loc: "LONAVALA", priceWd: "16000", priceWe: "26000", img: "public/villa/697b370a0a3ef.jpg", url: "villa-detail/60.html" },
-            { bhk: 5, title: "5 BHK BAMBLE VILLA", loc: "IGATPURI", priceWd: "15000", priceWe: "23000", img: "public/villa/697f3a6c6a8ca.jpg", url: "villa-detail/59.html" },
-            { bhk: 5, title: "5 BHK LIGO VILLA", loc: "KARJAT", priceWd: "13000", priceWe: "25000", img: "public/villa/697b3549c3010.jpg", url: "villa-detail/58.html" },
-            { bhk: 5, title: "5 BHK MARHABA VILLA", loc: "MAHABLESHWAR", priceWd: "18000", priceWe: "28000", img: "public/villa/697b3364da2b5.jpg", url: "villa-detail/57.html" },
-            { bhk: 5, title: "5 BHK KAMISAT VILLA", loc: "LONAVALA", priceWd: "13000", priceWe: "25000", img: "public/villa/697b316961de8.jpg", url: "villa-detail/56.html" },
-            { bhk: 5, title: "5 BHK DRIFTWOOD", loc: "PANCHGANI", priceWd: "17000", priceWe: "24000", img: "public/villa/697b2f61a1b27.jpg", url: "villa-detail/55.html" },
-            { bhk: 5, title: "5 BHK BATCOMB", loc: "KARJAT", priceWd: "18500", priceWe: "28000", img: "public/villa/6979fd053adde.jpg", url: "villa-detail/20.html" },
-
-            // 6 BHK
-            { bhk: 6, title: "6 BHK DUBASH FARM", loc: "MAHABLESHWAR", priceWd: "20000", priceWe: "35000", img: "public/villa/69c3f8c083d18.jpg", url: "villa-detail/88.html" },
-            { bhk: 6, title: "6 BHK GLASS HOUSE", loc: "PAWNA / LONAVALA", priceWd: "22000", priceWe: "39000", img: "public/villa/69c3f90b7e4d3.jpg", url: "villa-detail/87.html" },
-            { bhk: 6, title: "6 BHK PERCHE OFFGRID", loc: "LONAVALA / PAWNA", priceWd: "23000", priceWe: "39000", img: "public/villa/697f084cb5b66.jpg", url: "villa-detail/69.html" },
-            { bhk: 6, title: "6 BHK BHUBTARA", loc: "LONAVALA", priceWd: "22000", priceWe: "39000", img: "public/villa/697f13c93e07b.jpg", url: "villa-detail/68.html" },
-            { bhk: 6, title: "6 BHK LAKDAWALA BUNGALOW", loc: "LONAVALA", priceWd: "20000", priceWe: "38000", img: "public/villa/697f3c2842990.url", url: "villa-detail/67.html" },
-            { bhk: 6, title: "6 BHK HOUSEN VILLA", loc: "LONAVALA", priceWd: "19500", priceWe: "28000", img: "public/villa/697c4f67ad930.jpg", url: "villa-detail/66.html" },
-            { bhk: 6, title: "6 BHK BLACK STONE VILLA", loc: "LONAVALA", priceWd: "16500", priceWe: "28500", img: "public/villa/697c4e359d6e4.jpg", url: "villa-detail/65.html" },
-            { bhk: 6, title: "6 BHK MASK STONE", loc: "KARJAT", priceWd: "24000", priceWe: "42000", img: "public/villa/6979fe54aa120.jpg", url: "villa-detail/21.html" },
-
-            // 7 BHK
-            { bhk: 7, title: "7 BHK THE WHITE HELL", loc: "KARJAT", priceWd: "28000", priceWe: "42000", img: "public/villa/69c3f9774c0cb.jpg", url: "villa-detail/83.html" },
-            { bhk: 7, title: "7 BHK JIWA VILLA", loc: "ALIBAUG", priceWd: "20000", priceWe: "32000", img: "public/villa/69c3fa2e60b39.jpg", url: "villa-detail/74.html" },
-            { bhk: 7, title: "7 BHK HARSI VILLA", loc: "LONAVALA", priceWd: "28000", priceWe: "48000", img: "public/villa/697c57abf00cd.jpg", url: "villa-detail/73.html" },
-            { bhk: 7, title: "7 BHK BUDDHA VIHAR", loc: "KARJAT", priceWd: "28000", priceWe: "48000", img: "public/villa/697f0a42523a9.jpg", url: "villa-detail/72.html" },
-            { bhk: 7, title: "7 BHK LUXURY HUT VILLA", loc: "KARJAT", priceWd: "52000", priceWe: "90000", img: "public/villa/697c55c302d4e.jpg", url: "villa-detail/71.html" },
-            { bhk: 7, title: "7 BHK IGRI HORA TURF VILLA", loc: "IGATPURI", priceWd: "19500", priceWe: "39500", img: "public/villa/697c54c757230.jpg", url: "villa-detail/70.html" },
-            { bhk: 7, title: "7 BHK LOHKRA VILLA", loc: "LONAVALA", priceWd: "27000", priceWe: "42000", img: "public/villa/6979ff8579761.jpg", url: "villa-detail/22.html" },
-
-            // 8 BHK
-            { bhk: 8, title: "8 BHK MAHABIR VILLA", loc: "KARJAT", priceWd: "28000", priceWe: "48000", img: "public/villa/69c3f9d0b9386.jpg", url: "villa-detail/78.html" },
-            { bhk: 8, title: "8 BHK HILLJILL VILLA", loc: "IGATPURI", priceWd: "22000", priceWe: "42000", img: "public/villa/697c7db6c753e.jpg", url: "villa-detail/77.html" },
-            { bhk: 8, title: "8 BHK HIRRO VILLA", loc: "ALIBAUG", priceWd: "22000", priceWe: "42000", img: "public/villa/69c3f9f804616.jpg", url: "villa-detail/76.html" },
-            { bhk: 8, title: "8 BHK APRIT VILLA", loc: "LONAVALA", priceWd: "35000", priceWe: "58000", img: "public/villa/69c3fa14a55b2.jpg", url: "villa-detail/75.html" },
-            { bhk: 8, title: "8 BHK SANDHU FARMS", loc: "LONAVALA / PAWNA", priceWd: "35000", priceWe: "58000", img: "public/villa/697f3df10d88c.jpg", url: "villa-detail/23.html" },
-
-            // 10 BHK
-            { bhk: 10, title: "10 BHK CASA DE KRI", loc: "KARJAT", priceWd: "32000", priceWe: "60000", img: "public/villa/697c8783b280a.jpg", url: "villa-detail/80.html" },
-            { bhk: 10, title: "10 BHK PARIS VILLA", loc: "LONAVALA", priceWd: "32000", priceWe: "60000", img: "public/villa/697c85739690d.jpg", url: "villa-detail/79.html" },
-
-            // 12 BHK
-            { bhk: 12, title: "12 BHK ANJIRAM VILLA", loc: "LONAVALA", priceWd: "44000", priceWe: "88000", img: "public/villa/69c3f99b56ef9.jpg", url: "villa-detail/82.html" },
-            { bhk: 12, title: "12 BHK SINGARA VILLA", loc: "KARJAT", priceWd: "44000", priceWe: "88000", img: "public/villa/69d518437cf8f.jpg", url: "villa-detail/81.html" }
-        ];
-
-        const dynamicSections = document.getElementById('dynamic-sections');
-        const searchInput = document.getElementById('searchInput');
-        const bhkFilter = document.getElementById('bhkFilter');
-        const locationFilter = document.getElementById('locationFilter');
-
-        function createCard(v) {
-            const realId = v.url.replace('villa-detail/', '').replace('.html', '');
-            
-            return `
-                <a href="villa.html?id=${realId}" class="villa-card group block shrink-0">
-                    <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                        <div class="relative h-56 overflow-hidden bg-gray-100">
-                            <img src="${v.img}" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400'" alt="${v.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <div class="p-4 flex flex-col flex-grow">
-                            <h3 class="font-bold text-gray-800 text-[15px] leading-tight mb-2 line-clamp-2">${v.title}</h3>
-                            
-                            <div class="flex items-center gap-1 text-blue-500 text-xs font-semibold mb-3 uppercase tracking-wider">
-                                <i class="fa-solid fa-location-dot"></i> ${v.loc}
-                            </div>
-                            
-                            <div class="flex flex-col gap-2 mt-auto pt-3 border-t border-gray-100">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-500 text-[11px] font-medium uppercase">Weekdays</span>
-                                    <span class="text-gray-800 font-bold text-[15px]">₹${v.priceWd}</span>
-                                </div>
-                                <div class="flex justify-between items-center bg-red-50 px-2 py-1 rounded">
-                                    <span class="text-red-500 text-[11px] font-bold uppercase">Weekends</span>
-                                    <span class="text-red-600 font-bold text-[15px]">₹${v.priceWe}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            `;
-        }
-
-        function renderVillas() {
-            const search = searchInput.value.toLowerCase();
-            const bhkVal = bhkFilter.value;
-            const locVal = locationFilter.value.toLowerCase();
-
-            const filtered = villas.filter(v => {
-                const matchSearch = v.title.toLowerCase().includes(search) || v.loc.toLowerCase().includes(search);
-                const matchBhk = bhkVal === 'All' || v.bhk.toString() === bhkVal;
-                const matchLoc = locVal === 'all' || v.loc.toLowerCase().includes(locVal);
-                return matchSearch && matchBhk && matchLoc;
-            });
-
-            const grouped = filtered.reduce((acc, v) => {
-                if (!acc[v.bhk]) acc[v.bhk] = [];
-                acc[v.bhk].push(v);
-                return acc;
-            }, {});
-
-            dynamicSections.innerHTML = '';
-            
-            if(Object.keys(grouped).length === 0) {
-                dynamicSections.innerHTML = `
-                    <div class="text-center py-20 text-gray-500">
-                        <i class="fa-solid fa-magnifying-glass text-4xl mb-4 opacity-30"></i>
-                        <p class="text-lg">No villas found matching your filters.</p>
-                        <button onclick="clearFilters()" class="text-blue-500 mt-2 hover:underline">Clear Filters</button>
-                    </div>`;
-                return;
-            }
-
-            const sortedBhkKeys = Object.keys(grouped).sort((a, b) => Number(a) - Number(b));
-
-            sortedBhkKeys.forEach(bhk => {
-                const sectionHtml = `
-                    <section class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-50">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center gap-3">
-                                <h2 class="serif text-2xl md:text-3xl font-bold text-gray-800">${bhk} BHK Luxury Villas</h2>
-                                <span class="bg-gray-800 text-white text-[10px] px-2 py-1 rounded font-bold tracking-wider">${grouped[bhk].length} Properties</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <button onclick="scrollSection('carousel-${bhk}', -1)" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 text-gray-500 hover:text-gray-800 transition"><i class="fa-solid fa-chevron-left"></i></button>
-                                <button onclick="scrollSection('carousel-${bhk}', 1)" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 text-gray-500 hover:text-gray-800 transition"><i class="fa-solid fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                        <div id="carousel-${bhk}" class="scroll-container flex gap-4 md:gap-6 overflow-x-auto no-scrollbar pb-4 pt-2">
-                            ${grouped[bhk].map(v => createCard(v)).join('')}
-                        </div>
-                    </section>
-                `;
-                dynamicSections.innerHTML += sectionHtml;
-            });
-        }
-
-        window.scrollSection = function(id, direction) {
-            const container = document.getElementById(id);
-            if (container) {
-                const scrollAmount = (window.innerWidth > 768 ? 370 : 320) * direction;
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-
-        window.clearFilters = function() {
-            searchInput.value = '';
-            bhkFilter.value = 'All';
-            locationFilter.value = 'All';
-            renderVillas();
-        }
-
-        searchInput.addEventListener('input', renderVillas);
-        bhkFilter.addEventListener('change', renderVillas);
-        locationFilter.addEventListener('change', renderVillas);
-
-        // Initial Render
-        renderVillas();
-
-        // ==========================================
-        // 2. BOOKING CALCULATOR LOGIC
-        // ==========================================
-        const ESTIMATOR_PRICE_WD = 5500; // Base rate for weekday estimator
-        const ESTIMATOR_PRICE_WE = 9000; // Base rate for weekend estimator
-        const BASE_PAX = 4;          
-        const EXTRA_PAX_PRICE = 1000;
-
-        const checkInInput = document.getElementById('checkIn');
-        const checkOutInput = document.getElementById('checkOut');
-        const paxInput = document.getElementById('pax');
-        const priceBreakdown = document.getElementById('priceBreakdown');
-        
-        const wdSummary = document.getElementById('wdSummary');
-        const wdTotal = document.getElementById('wdTotal');
-        const weSummary = document.getElementById('weSummary');
-        const weTotal = document.getElementById('weTotal');
-        const paxSummary = document.getElementById('paxSummary');
-        const paxTotal = document.getElementById('paxTotal');
-        const grandTotalDisplay = document.getElementById('grandTotal');
-
-        // Set minimum Check-in date to today
-        const today = new Date().toISOString().split('T')[0];
-        checkInInput.min = today;
-
-        checkInInput.addEventListener('change', function() {
-            let nextDay = new Date(this.value);
-            nextDay.setDate(nextDay.getDate() + 1);
-            checkOutInput.min = nextDay.toISOString().split('T')[0];
-            
-            if(checkOutInput.value && checkOutInput.value <= this.value) {
-                checkOutInput.value = checkOutInput.min;
-            }
-            calculatePricing();
-        });
-
-        checkOutInput.addEventListener('change', calculatePricing);
-        paxInput.addEventListener('input', calculatePricing);
-
-        function calculatePricing() {
-            if (!checkInInput.value || !checkOutInput.value) {
-                priceBreakdown.classList.add('hidden');
-                return;
-            }
-
-            let inDate = new Date(checkInInput.value);
-            let outDate = new Date(checkOutInput.value);
-            
-            let totalWdNights = 0;
-            let totalWeNights = 0;
-
-            let currentDate = new Date(inDate);
-            while (currentDate < outDate) {
-                let dayOfWeek = currentDate.getDay();
-                if (dayOfWeek === 5 || dayOfWeek === 6) { // Friday & Saturday
-                    totalWeNights++;
-                } else {
-                    totalWdNights++;
-                }
-                currentDate.setDate(currentDate.getDate() + 1);
-            }
-
-            let totalNights = totalWdNights + totalWeNights;
-            if (totalNights <= 0) return;
-
-            let costWd = totalWdNights * ESTIMATOR_PRICE_WD;
-            let costWe = totalWeNights * ESTIMATOR_PRICE_WE;
-
-            let guests = parseInt(paxInput.value) || 1;
-            let extraGuests = Math.max(0, guests - BASE_PAX);
-            let costExtraPax = extraGuests * EXTRA_PAX_PRICE * totalNights;
-
-            let grandTotal = costWd + costWe + costExtraPax;
-
-            wdSummary.textContent = `${totalWdNights} Weekday Night(s)`;
-            wdTotal.textContent = `₹${costWd.toLocaleString('en-IN')}`;
-            
-            weSummary.textContent = `${totalWeNights} Weekend Night(s)`;
-            weTotal.textContent = `₹${costWe.toLocaleString('en-IN')}`;
-
-            paxSummary.textContent = `Extra Guests (${extraGuests})`;
-            paxTotal.textContent = `₹${costExtraPax.toLocaleString('en-IN')}`;
-
-            grandTotalDisplay.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
-
-            priceBreakdown.classList.remove('hidden');
-            priceBreakdown.classList.add('flex');
-        }
-
-    </script>
-</body>
-</html>
+    <div class="space-y-3">
+        <button class="w-full bg-[#4ADE80] hover:bg-[#22c55e] text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition shadow-sm">
+            <i class="fa-brands fa-whatsapp text-lg"></i> Check Availability
+        </button>
+        <button class="w-full bg-[#6D28D9] hover:bg-[#5b21b6] text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition shadow-sm">
+            <i class="fa-solid fa-qrcode"></i> Pay 60% Booking Advance
+        </button>
+        <button class="w-full border-2 border-gray-800 text-gray-800 hover:bg-gray-50 font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition">
+            <i class="fa-solid fa-share-nodes"></i> Share Villa
+        </button>
+    </div>
+    
+    <p class="text-[9px] text-center text-gray-400 font-bold uppercase tracking-wider mt-5">100% Booking amount required</p>
+</div>
